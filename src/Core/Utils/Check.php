@@ -20,7 +20,7 @@ class Check {
 	public static function makeSafeAssociativeArray(array $associativeArray){
 		$safeAssociativeArray = [];
 		foreach($associativeArray as $key => $value){
-			if($key === 'url' || $key === 'fuether'){
+			if($key === 'url' || $key === 'further'){
 				$safeValue = self::isUrl($value,true) ? $value : NULL;
 			}else{
 				$safeValue = self::is_safe_alphanumeric($value,true) ? $value : NULL;
