@@ -17,9 +17,9 @@ echo '<form class="form-inline" method="post" action="index.php?page=skill&skill
       '<button class="btn" onclick="search()"><i class="fa fa-search"></i> search</button><input id="searchinput" class="btn-input"></form>';
 echo "<hr>";
 
-echo "<ul>";
+echo '<ul class="item-list" data-columns="2">';
 foreach($items as $item):
-if    (!is_null($item->further) && Check::isUrl($item->further)){ echo '<li><a href="'.$item->further .'" target="_blank">'.$item->name.'</a>  '. $item->description.'</li>'; }
+if    (!is_null($item->further) && Check::isUrl($item->further)){ echo '<li class="item-list"><a href="'.$item->further .'" target="_blank">'.$item->name.'</a>   '. $item->description.'</li>'; }
 elseif(!is_null($item->further) && Check::isPdf($item->further)){ echo '<li><a href="./public/doc/'.$item->further.'" target="_blank">'.$item->name.'  '.$item->description.'</a></li>'; }
 //for long description without url or doc
 else { echo '<li><a href="index.php?page=item&itemid='.$item->id.'&skill_name='.$skill->name.'">'.$item->name.'</a></li>'; }
