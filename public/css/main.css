@@ -10,10 +10,6 @@ li{
 	list-style:none;
 }
 
-.itemlist{
-	margin-left: 10px;
-}
-
 ul.displaySkills li {
    display: inline;
    text-align: center;
