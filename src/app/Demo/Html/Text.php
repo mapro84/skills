@@ -1,5 +1,5 @@
 <?php
-namespace src\app\demos\Html;
+namespace src\app\Demo\Html;
 
 class Text{
 

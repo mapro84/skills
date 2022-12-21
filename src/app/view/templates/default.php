@@ -13,7 +13,7 @@
 <header class="navbar navbar-static-top bs-docs-nav" id="top">
 <div class="container">
 <div class="navbar-header">
-<a href="index.php?page=home" class="navbar-brand"><img height="50px" src="public/img/tips-logo4.png"></a>
+<a href="index.php?page=home" class="navbar-brand"><img height="50px" src="public/img/tips-logo4.png" title="Home page - my notes"></a>
 </div>
 <ul class="nav navbar-nav">
 <li>

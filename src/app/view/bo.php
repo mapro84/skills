@@ -19,7 +19,7 @@ if($action === 'add'){
   </div>
   <div class="form-group">
     <label for="logo">Logo:</label>
-    <input type="text" name="logo" pattern="[\sA-Za-z0-9.-]{5,15}" title="Only alphanumeric values, at least 5 characters, 15 max">
+    <input type="text" name="logo" pattern="[A-Za-z0-9.-]{5,50}" title="Only alphanumeric values, at least 5 characters, 15 max">
   </div>
   <button type="submit" class="btn btn-default">Submit</button>
 </form> 
@@ -30,15 +30,15 @@ if($action === 'add'){
 <form class="postform" action="index.php?page=additem" method="post">
   <div class="form-group">
     <label for="name">Name:</label>
-    <input type="text" name="name" pattern="[À-žA-Za-z0-9.,!\s]{3,50}" title="Only alphanumeric values, at least 3 characters">
+    <input type="text" name="name" pattern="[À-žA-Za-z0-9.,!-\s]{3,50}" title="Only alphanumeric values, at least 3 characters">
   </div>
   <div class="form-group">
     <label for="description">Description:</label>
-    <input type="text" name="description" pattern="[À-žA-Za-z0-9.,!\s]{3,2000}" title="Only alphanumeric values, at least 5 characters">
+    <input type="text" name="description" pattern="[À-žA-Za-z0-9.,-!\s]{3,2000}" title="Only alphanumeric values, at least 5 characters">
   </div>
   <div class="form-group">
     <label for="further">Further:</label>
-    <input type="text" name="further" pattern="[A-Za-z0-9.:/?&]{0,50}">
+    <input type="text" name="further" pattern="[A-Za-z0-9.:\/?&]{0,350}">
   </div>
     <div class="form-group">
     <label for="skill_id">Skill_id:</label>

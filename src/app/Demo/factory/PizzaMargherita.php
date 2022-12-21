@@ -1,5 +1,5 @@
 <?php
-namespace src\app\demos\factory;
+namespace src\app\Demo\factory;
 
 class PizzaMargherita Implements Pizza{
 	

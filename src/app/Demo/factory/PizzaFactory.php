@@ -1,7 +1,7 @@
 <?php
-namespace src\app\demos\factory;
+namespace src\app\Demo\factory;
 
-use src\app\demos\factory\Shape;
+use src\app\Demo\factory\Shape;
 
 class PizzaFactory {
 	

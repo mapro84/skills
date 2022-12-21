@@ -1,7 +1,7 @@
 <?php
-namespace src\app\demos\factory;
+namespace src\app\Demo\factory;
 
-use src\app\demos\factory\PizzaFactory;
+use src\app\Demo\factory\PizzaFactory;
 
 class Demo {
 
@@ -31,7 +31,7 @@ class Demo {
 
 '&#139;&#63;php
 
-namespace src\app\demos\factory;
+namespace src\app\Demo\factory;
 
 interface Pizza {
     
@@ -45,7 +45,7 @@ interface Pizza {
 
 . '&#139;&#63;php
                 
-namespace src\app\demos\factory;
+namespace src\app\Demo\factory;
 
 class Pizza3Cheese Implements Pizza{
     
@@ -59,7 +59,7 @@ class Pizza3Cheese Implements Pizza{
 
 . '&#139;&#63;php
 
-namespace src\app\demos\factory;
+namespace src\app\Demo\factory;
 
 class PizzaChorizo Implements Pizza{
     
@@ -73,7 +73,7 @@ class PizzaChorizo Implements Pizza{
 
 . '&#139;&#63;php
 
-namespace src\app\demos\factory;
+namespace src\app\Demo\factory;
 
 class PizzaMargherita Implements Pizza{
 	
@@ -91,9 +91,9 @@ class PizzaMargherita Implements Pizza{
 
 . '&#139;&#63;php
 
-namespace src\app\demos\factory;
+namespace src\app\Demo\factory;
 
-use src\app\demos\factory\Shape;
+use src\app\Demo\factory\Shape;
 
 class PizzaFactory {
 	
@@ -132,9 +132,9 @@ class PizzaFactory {
         
 . '&#139;&#63;php
                 
-namespace src\app\demos\factory;
+namespace src\app\Demo\factory;
 
-use src\app\demos\factory\PizzaFactory;
+use src\app\Demo\factory\PizzaFactory;
 use src\Core\Utils\Debug;
 
 class Demo {

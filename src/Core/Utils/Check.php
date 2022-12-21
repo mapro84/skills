@@ -12,6 +12,8 @@ class Check {
 		$this->genconf = Config::getGenConf();
 	}
 	
+	// TODO check enter : Type, length, remove cotes, html, scripts; spaces or not authorized
+	
 	/**
 	 * make secure an array got by $_POST, $_GET ...
 	 * @param array $associativeArray
@@ -25,6 +27,7 @@ class Check {
 			}else{
 				$safeValue = self::is_safe_alphanumeric($value,true) ? $value : NULL;
 			}
+			$safeValue = $value;
 			$safeAssociativeArray[$key] = $safeValue;
 		}
 		return $safeAssociativeArray;
@@ -32,7 +35,7 @@ class Check {
 	
 	function assertValidUTF8($str) {
 		if (strlen($str) AND !preg_match('/^.{1}/us', $str)) {
-			return false;;
+			return false;
 		}
 		return true;
 	}

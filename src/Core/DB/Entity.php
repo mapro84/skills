@@ -77,4 +77,5 @@ class Entity{
     	$parameters = [$id];
     	return DB::prepare($query, $parameters, get_called_class());
     }
+    
 }

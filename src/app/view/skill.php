@@ -4,6 +4,7 @@ use src\Core\Utils\Check;
 
 $skill = $entities['skill'];
 $items = $entities['items'];
+$demos = $entities['demos'];
 
 echo '<span><img src="./public/img/' . $skill->logo . '" alt="'.$skill->name.' Logo" height="45px"></span>';
 echo '<form class="form-inline" method="post" action="index.php?page=deleteskill" ' .
@@ -27,6 +28,26 @@ else { echo '<li><a href="index.php?page=item&itemid='.$item->id.'&skill_name='.
 endforeach;
 echo "</ul>";
 ?>
+
+
+<?php
+$numberDemos = count($demos);
+if($numberDemos>0){
+?>
+<ul>
+	<li class="remove-bullet">Related Demos</li>
+	<ul>
+	<?php
+		foreach($demos as $demo){
+			echo '<li><a href="index.php?page=demo&demo_id='.$demo->id.'" target="_blank">'.$demo->name.'</a></li>';
+		}
+	?>
+	</ul>
+</ul>
+<?php
+}
+?>
+
 
 <script>
 function search() {
