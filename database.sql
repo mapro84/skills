@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 24, 2022 at 06:59 PM
+-- Generation Time: Dec 24, 2022 at 08:38 PM
 -- Server version: 8.0.31
 -- PHP Version: 7.4.33
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `itcheatsheets`
 --
+CREATE DATABASE IF NOT EXISTS `itcheatsheets` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `itcheatsheets`;
 
 -- --------------------------------------------------------
 
@@ -27,6 +29,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `appuser`
 --
 
+DROP TABLE IF EXISTS `appuser`;
 CREATE TABLE `appuser` (
   `id` int NOT NULL,
   `username` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
@@ -48,6 +51,7 @@ INSERT INTO `appuser` (`id`, `username`, `password`, `privilege_id`) VALUES
 -- Table structure for table `demo`
 --
 
+DROP TABLE IF EXISTS `demo`;
 CREATE TABLE `demo` (
   `id` int NOT NULL,
   `name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
@@ -69,6 +73,7 @@ INSERT INTO `demo` (`id`, `name`, `description`, `item_id`) VALUES
 -- Table structure for table `item`
 --
 
+DROP TABLE IF EXISTS `item`;
 CREATE TABLE `item` (
   `id` int NOT NULL,
   `name` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
@@ -132,6 +137,7 @@ INSERT INTO `item` (`id`, `name`, `description`, `further`, `skill_id`) VALUES
 -- Table structure for table `note`
 --
 
+DROP TABLE IF EXISTS `note`;
 CREATE TABLE `note` (
   `id` int NOT NULL,
   `name` varchar(30) COLLATE utf8mb4_general_ci NOT NULL,
@@ -154,6 +160,7 @@ INSERT INTO `note` (`id`, `name`, `description`) VALUES
 -- Table structure for table `privilege`
 --
 
+DROP TABLE IF EXISTS `privilege`;
 CREATE TABLE `privilege` (
   `id` int NOT NULL,
   `name` varchar(15) COLLATE utf8mb4_general_ci NOT NULL,
@@ -174,6 +181,7 @@ INSERT INTO `privilege` (`id`, `name`, `description`) VALUES
 -- Table structure for table `skill`
 --
 
+DROP TABLE IF EXISTS `skill`;
 CREATE TABLE `skill` (
   `id` int NOT NULL,
   `name` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
@@ -203,6 +211,7 @@ INSERT INTO `skill` (`id`, `name`, `logo`) VALUES
 -- Table structure for table `url`
 --
 
+DROP TABLE IF EXISTS `url`;
 CREATE TABLE `url` (
   `id` int NOT NULL,
   `name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
