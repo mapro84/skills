@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 15, 2022 at 12:04 PM
+-- Generation Time: Dec 24, 2022 at 07:52 AM
 -- Server version: 8.0.31
--- PHP Version: 7.4.32
+-- PHP Version: 7.4.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -55,6 +55,14 @@ CREATE TABLE `demo` (
   `item_id` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `demo`
+--
+
+INSERT INTO `demo` (`id`, `name`, `description`, `item_id`) VALUES
+(8, 'Factory', 'Design pattern', 8),
+(9, 'Fluent', 'Design Pattern', 55);
+
 -- --------------------------------------------------------
 
 --
@@ -65,7 +73,7 @@ CREATE TABLE `item` (
   `id` int NOT NULL,
   `name` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `further` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'pdf, images, txt...',
+  `further` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'pdf, images, txt...',
   `skill_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -75,7 +83,7 @@ CREATE TABLE `item` (
 
 INSERT INTO `item` (`id`, `name`, `description`, `further`, `skill_id`) VALUES
 (4, 'Foreign key', 'ALTER TABLE urls\\r\\nADD CONSTRAINT fk_urls_skill_id\\r\\nFOREIGN KEY (skill_id)\\r\\nREFERENCES skill(id);', 'https://www.w3schools.com/sql/sql_ref_foreign_key.asp', 5),
-(8, 'Factory Design pattern', 'The Factory Design Pattern is a creational design pattern that provides a way to create objects without having to specify the exact class of the object that will be created. It involves a factory class that has a method that receives parameters and returns an object of a class that is specified by the parameters. The Factory Design Pattern is useful when there is a need to create objects of different types.', 'https://www.geeksforgeeks.org/factory-method-design-pattern-in-java/', 4),
+(8, 'Factory Design pattern', 'The Factory Design Pattern provides a way to create objects. It involves a factory class that has a method that receives parameters and returns an object of a class.', 'https://www.geeksforgeeks.org/factory-method-design-pattern-in-java/', 4),
 (11, 'Cheat-Sheet', '', 'php-cheat-sheet.pdf', 1),
 (16, 'Rename Table', 'RENAME TABLE old_table TO new_table;', 'https://mariadb.com/kb/en/rename-table/', 5),
 (17, 'Current directory path', '__DIR__', 'https://www.tutorialspoint.com/how-to-use-dir-in-php', 1),
@@ -86,7 +94,37 @@ INSERT INTO `item` (`id`, `name`, `description`, `further`, `skill_id`) VALUES
 (22, 'Grafikart', 'Tutorial Php, JS, TS, Html, Css, Vue', 'https://grafikart.fr', 36),
 (23, 'W3docs', 'Tutorial Html5, Css, Git, JS, PHP', 'https://www.w3docs.com/', 36),
 (24, 'Icon library', 'Free icons library', 'https://icon-library.com/', 7),
-(26, 'Icon library', 'Free icons library', NULL, 7);
+(27, 'Github', 'Git Versioning projects', 'https://github.com', 36),
+(28, 'jsfiddle', 'Html, css and javascript sandbox', 'http://jsfiddle.net', 36),
+(29, 'geeksforgeeks', 'Tutorials AI, Java, Python, C++, Data-Science, JS, Machine-learning', 'https://www.geeksforgeeks.org/', 36),
+(31, 'Google Sandbox', 'Python Sandbox', 'https://colab.research.google.com/drive/1PZShdlNNsHHE__y1SiWB_EVh-EDBjMXS?authuser=1#scrollTo=C4HZx7Gndbrh', 2),
+(32, 'Google sheet lessons', 'David Ross English learning', 'https://docs.google.com/document/d/1aKVpX0sTRICmfq1N-3dEne7MSrXrIJvU4fZKwqZiFdw/edit', 38),
+(35, 'Title attribute', 'Improve display', 'https://www.manalite.com/goodies/title.php', 7),
+(36, 'Udemy', 'Paid IT training', 'https://www.udemy.com', 36),
+(37, 'PluralSight', 'Paid IT training plateform', 'https://www.pluralsight.com', 36),
+(38, 'SentenceChecker', 'Check english written sentences', 'https://sentencechecker.com/', 38),
+(39, 'Wordtune', 'Checks Sentences, corrects and offers variants', 'https://app.wordtune.com/editor/', 38),
+(42, 'englisch-hilfen', 'Grammer exercises, tests', 'https://www.englisch-hilfen.de/en', 38),
+(43, 'deepl', 'Translation', 'https://www.deepl.com/translator', 38),
+(44, 'Reverso', 'Translation', 'https://www.reverso.net/text-translation', 38),
+(46, 'Linguee', 'Translation', 'https://www.linguee.fr/', 38),
+(47, 'Quillbot', 'Sentence Checker and variant', 'https://quillbot.com/', 38),
+(48, 'Roadmap', 'Guides and other educational content for developers', 'https://roadmap.sh', 36),
+(49, 'Hackerrank', 'Coding Test', 'https://www.hackerrank.com/', 36),
+(50, 'App.programiz.pro', 'Tutorial', 'https://app.programiz.pro/', 2),
+(51, 'OPenclassroom', 'Tutorial', 'https://openclassrooms.com/fr/courses/7771531-decouvrez-les-librairies-python-pour-la-data-science/7857178-creez-votre-premier-data-frame-avec-pandas', 2),
+(52, 'Linode', 'Cheat in command line', 'https://www.linode.com/docs/guides/linux-cheat-command/', 3),
+(53, 'Sheetformula', 'AI Excel Formula ', 'https://sheetformula.com/genformula.html', 40),
+(54, 'Copocorp', 'Html Special characters', 'http://copocorp.free.fr/caracteresSpeciaux/', 7),
+(55, 'Fluent', 'Design pattern', 'https://designpatternsphp.readthedocs.io/en/latest/Structural/FluentInterface/README.html', 4),
+(56, 'Alwasdata', 'Web Hosting, Administration, Api', 'https://admin.alwaysdata.com/', 36),
+(57, 'Demo.filestash.app', 'Ftp online', 'https://demo.filestash.app/files/', 36),
+(58, 'Reqbin.com', 'Curl, Rest & SOAP API Online, Python, PHP, Javascript, Java, Xml, Json', 'https://reqbin.com/curl', 36),
+(59, 'Httpie', 'Api Test', 'https://httpie.io/', 36),
+(60, 'OpenClassRoom', 'Tutoriel micro-services', 'https://openclassrooms.com/fr/courses/4668056-construisez-des-microservices', 36),
+(61, 'Analyse-innovation-solution', 'Curl Tutorial', 'https://analyse-innovation-solution.fr/publication/fr/php/curl-post-get-proxy-https', 36),
+(62, 'packagist.org Curl', 'Php Curl', 'https://packagist.org/packages/curl/curl', 1),
+(63, 'OpenClassRoom', 'Api Tutorial', 'https://openclassrooms.com/fr/courses/6573181-adoptez-les-api-rest-pour-vos-projets-web', 36);
 
 -- --------------------------------------------------------
 
@@ -155,7 +193,9 @@ INSERT INTO `skill` (`id`, `name`, `logo`) VALUES
 (6, 'AI', 'ai.png'),
 (7, 'HTML', 'html-logo.svg'),
 (36, 'IT', 'IT.png'),
-(37, 'Java', 'java.png');
+(37, 'Java', 'java.png'),
+(38, 'English', 'english-learning.png'),
+(40, 'Excel', 'excel.png');
 
 -- --------------------------------------------------------
 
@@ -244,13 +284,13 @@ ALTER TABLE `appuser`
 -- AUTO_INCREMENT for table `demo`
 --
 ALTER TABLE `demo`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- AUTO_INCREMENT for table `note`
@@ -268,7 +308,7 @@ ALTER TABLE `privilege`
 -- AUTO_INCREMENT for table `skill`
 --
 ALTER TABLE `skill`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `url`
