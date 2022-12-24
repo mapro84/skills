@@ -22,11 +22,11 @@ echo '<form class="form-inline" method="post" action="index.php?page=item&item_i
 		'<button class="btn" onclick="search()"><i class="fa fa-search"></i> search</button><input id="searchinput" class="btn-input"></form>';
 
 echo "<hr>";
-echo "<ul>";
-if    (!is_null($item->further) && Check::isUrl($item->further)){ echo '<li><a href="'.$item->further .'" target="_blank">'.$item->description.'</a></li>'; }
-elseif(!is_null($item->further) && Check::isPdf($item->further)){ echo '<li><a href="./public/doc/'.$item->further.'" target="_blank">'.$item->description.'</a></li>'; }
+echo "<div class='row'>";
+if    (!is_null($item->further) && Check::isUrl($item->further)){ echo '<div class="col"><a href="'.$item->further .'" target="_blank">'.$item->description.'</a></div>'; }
+elseif(!is_null($item->further) && Check::isPdf($item->further)){ echo '<div class="col"><a href="./public/doc/'.$item->further.'" target="_blank">'.$item->description.'</a></div>'; }
 else  { echo '<li>' . $item->description . '</li>'; }
-echo "</ul>";
+echo "</div>";
 
 $numberDemos = count($demos);
 if($numberDemos>0){

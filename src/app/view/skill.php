@@ -18,15 +18,32 @@ echo '<form class="form-inline" method="post" action="index.php?page=skill&skill
       '<button class="btn" onclick="search()"><i class="fa fa-search"></i> search</button><input id="searchinput" class="btn-input"></form>';
 echo "<hr>";
 
-echo '<ul class="item-list" data-columns="2">';
+// echo '<ul class="item-list" data-columns="2">';
+
 foreach($items as $item):
-if    (!is_null($item->further) && Check::isUrl($item->further)){ echo '<li class="item-list"><a href="'.$item->further .'" target="_blank">'.$item->name.'</a>   '. $item->description.'</li>'; }
-elseif(!is_null($item->further) && Check::isPdf($item->further)){ echo '<li><a href="./public/doc/'.$item->further.'" target="_blank">'.$item->name.'  '.$item->description.'</a></li>'; }
+
+if    (!is_null($item->further) && Check::isUrl($item->further)){ 
+	echo "<div class='row'>";
+	echo '<div style="text-align: left" class="col-4"><a href="'.$item->further .'" target="_blank">'.$item->name.'</a>'.'</div>';
+	echo '<div style="text-align: left" class="col-8">'.$item->description.'</div>';
+	echo "</div>";
+}
+elseif(!is_null($item->further) && Check::isPdf($item->further)){ 
+	echo "<div class='row'>";
+	echo '<div style="text-align: left" class="col"><a href="./public/doc/'.$item->further.'" target="_blank">'.$item->name.'  '.$item->description.'</a></div>';
+	echo "</div>";
+}
 //for long description without url or doc
-else { echo '<li><a href="index.php?page=item&itemid='.$item->id.'&skill_name='.$skill->name.'">'.$item->name.'</a></li>'; }
+else { 
+	echo "<div class='row'>";
+	echo '<div style="text-align: left"  class="col"><a href="index.php?page=item&itemid='.$item->id.'&skill_name='.$skill->name.'">'.$item->name.'</a></div>';
+	echo "</div>";
+	
+}
 
 endforeach;
-echo "</ul>";
+// echo "</ul>";
+
 ?>
 
 
