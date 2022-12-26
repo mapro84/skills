@@ -6,6 +6,13 @@ use src\Core\Utils\Debug;
 
 class Entity{
 
+	public $id;
+	public $name;
+	public $description;
+	public $further;
+	public $skill_id;
+
+
     public static function getAll($table){
     	$query = 'SELECT * FROM ' . strtolower($table);
         return DB::prepare($query, [], get_called_class());
@@ -23,7 +30,7 @@ class Entity{
     	return DB::prepare($query, $parameters, get_called_class());
     }
 
-    public function findByName($table,$name){
+    public static function findByName($table,$name){
     	$query = "SELECT * FROM ".$table." WHERE name = ?";
     	$parameters = [$name];
     	return DB::prepare($query, $parameters, get_called_class(),true);

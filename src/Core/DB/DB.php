@@ -8,21 +8,23 @@ use src\Core\Utils\Debug;
 
 class DB{
 
-	
-	// TODO pour eviter injections SQL
-	// Requetes préparées :  $post = $db->prepare('SELECT * from skills where id = ?', [$param1, $param2 ...]); // tableau de params
-	
     private static $instance = null;
     private $id;
     private function __construct(){}
 
-    public static function getInstance(){
+    public function __get(string $property): string{
+    	$method = 'get' . ucfirst($property);
+    	$this->key = $this->$method();
+    	return $this->key;
+    }
+
+     public static function getInstance(){
         return is_null(self::$instance) ? self::getPDOConnection() : self::$instance;
     }
 
     public function clone(){}
 
-    private function getPDOConnection(){
+    private static function getPDOConnection(){
     	
     	$config = Config::getGenConf();
     	

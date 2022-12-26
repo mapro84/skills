@@ -4,21 +4,45 @@ use src\Core\Utils\Check;
 
 $skill = $entities['skill'];
 $items = $entities['items'];
-$demos = $entities['demos'];
+$demos = isset($entities['demos']) ? $entities['demos'] : [];
+?>
 
-echo '<span><img src="./public/img/' . $skill->logo . '" alt="'.$skill->name.' Logo" height="45px"></span>';
-echo '<form class="form-inline" method="post" action="index.php?page=deleteskill" ' .
+<div class="container px-4 py-5" id="featured-3">
+<div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<div class="head-menu collapse navbar-collapse" id="navbarSupportedContent">
+<ul class="navbar-nav mr-auto">
+
+<?php
+echo '<li class="navbar-brand"><img src="./public/img/' . $skill->logo . '" alt="'.$skill->name.' Logo"></li>';
+echo '<li><form class="form-inline" method="post" action="index.php?page=deleteskill" ' .
        'onsubmit="return confirm(\'Do you confirm to delete ' . $skill->name . ' skill and possible items related?\');">' .
 	   '<input type="hidden" name="skill_id" value='.$skill->id.'>' . 
-	   '<button class="btn" ><i class="fa fa-trash"></i> Delete</button></form>';
-// echo '<form class="form-inline" method="post" action="index.php?page=skills&action=updateskill">'.
-// 	  '<input type="hidden" name="skill_id" value='.$skill->id.'/>' .
-// 	  '<button class="btn"><i class="fa fa-edit"></i> Edit</button></form>';
-echo '<form class="form-inline" method="post" action="index.php?page=skill&skill_id='.$skill->id.'&action=search">'.
-      '<button class="btn" onclick="search()"><i class="fa fa-search"></i> search</button><input id="searchinput" class="btn-input"></form>';
+	   '<button class="btn btn-danger" ><i class="fa fa-trash"></i></button></form></li>';
+// echo '<form class="form-inline my-2 my-lg-0">
+// <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+// <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+// </form>';
 echo "<hr>";
+?>
 
-// echo '<ul class="item-list" data-columns="2">';
+<!-- 
+Ex button inline	
+
+<div class="input-group mb-3">
+  <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+  <div class="input-group-append">
+    <button class="btn btn-outline-secondary" type="button">Button</button>
+  </div>
+</div> -->
+
+</ul>
+</div>
+</nav>
+</div>
+</div>
+
+<?php
 
 foreach($items as $item):
 
@@ -30,15 +54,22 @@ if    (!is_null($item->further) && Check::isUrl($item->further)){
 }
 elseif(!is_null($item->further) && Check::isPdf($item->further)){ 
 	echo "<div class='row'>";
-	echo '<div style="text-align: left" class="col"><a href="./public/doc/'.$item->further.'" target="_blank">'.$item->name.'  '.$item->description.'</a></div>';
+	echo '<div style="text-align: left" class="col"><a href="./public/doc/'.$item->further.'" target="_blank">'.$item->name.'</a></div>';
+	echo '<div style="text-align: left" class="col-8">'.$item->description.'</div>';
 	echo "</div>";
 }
 //for long description without url or doc
-else { 
+elseif(strlen($item->description) < 5){ 
 	echo "<div class='row'>";
-	echo '<div style="text-align: left"  class="col"><a href="index.php?page=item&itemid='.$item->id.'&skill_name='.$skill->name.'">'.$item->name.'</a></div>';
+	echo '<div style="text-align: left"  class="col">'.$item->name.'</div>';
+	echo '<div style="text-align: left" class="col-8">'.$item->description.'</div>';
 	echo "</div>";
-	
+}else{
+	echo "<div class='row'>";
+	echo '<div style="text-align: left"  class="col">'.$item->name.'</div>';
+	// echo '<div style="text-align: left" class="col-8">'.substr($item->description,0,50).'...</div>';
+	echo '<div style="text-align: left"  class="col-8"><a href="index.php?page=item&itemid='.$item->id.'&skill_name='.$skill->name.'">'.substr($item->description,0,50).'...</a></div>';
+	echo "</div>";
 }
 
 endforeach;

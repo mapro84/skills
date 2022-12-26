@@ -11,6 +11,13 @@ class UserController extends AppController {
 	private $user;
 
 	public function login(){
+
+		// TODO review login process
+		$boController = new BOController();
+		$boController->show('add');
+		// return;
+
+
 		if(isset($_POST['username']) && isset($_POST['password'])){
 			$username = addslashes($_POST['username']);
 			$password = addslashes($_POST['password']);
