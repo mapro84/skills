@@ -57,7 +57,6 @@ class Entity{
     }
     
     public static function update($table,$params){
-//     	UPDATE `note` SET `id`='[value-1]',`name`='[value-2]',`description`='[value-3]' WHERE 1
     	$query = "UPDATE ".$table." SET ";
     	$parameters = [];
     	$sizeParams = count($params);
@@ -73,7 +72,7 @@ class Entity{
     	return DB::prepare($query, $parameters, get_called_class(),true);
     }
     
-    public function delete($table,$id){
+    public static function delete($table,$id){
     	$query = "DELETE FROM ".$table." WHERE id = ?";
     	$parameters = [$id];
     	return DB::prepare($query, $parameters, get_called_class());

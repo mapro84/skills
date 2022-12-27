@@ -42,8 +42,8 @@ Ex button inline
 </div>
 </div>
 
+<div class="container px-4 py-5" id="featured-3">
 <?php
-
 foreach($items as $item):
 
 if    (!is_null($item->further) && Check::isUrl($item->further)){ 
@@ -73,11 +73,10 @@ elseif(strlen($item->description) < 5){
 }
 
 endforeach;
-// echo "</ul>";
-
 ?>
+</div>
 
-
+<div class="container px-4 py-5" id="featured-3">
 <?php
 $numberDemos = count($demos);
 if($numberDemos>0){
@@ -95,7 +94,7 @@ if($numberDemos>0){
 <?php
 }
 ?>
-
+</div>
 
 <script>
 function search() {

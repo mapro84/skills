@@ -42,7 +42,8 @@ class SkillController extends AppController{
 	public function delete($skill_id){
 		$resQuery['resQuery'] = Skill::delete('skill',$skill_id);
 		array_push($this->messages['infos'],$resQuery);
-		$entities = array('resQuery' => $resQuery);
+		$notes = Entity::getAll('note');
+		$entities = array('resQuery' => $resQuery,'notes' => $notes);
 		$this->render('home',$entities);
 	}
 	

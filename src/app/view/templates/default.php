@@ -41,9 +41,9 @@
       <li>
       <a class="navbar-brand" href="index.php?page=skill_name&name=HTML"><img src="public/img/html-logo.svg" title="Html"></a>
       </li>
-      <!-- <li class="back-office-logo">
+      <li class="back-office-logo">
       <a class="navbar-brand" href="index.php?page=bo&action=add"><img src="public/img/back-office.png" title="Back-office"></a>
-      </li>     -->
+      </li>    
     </ul>
   </div>
   <form class="form-inline my-2 my-lg-0 col-1">
