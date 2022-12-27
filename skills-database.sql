@@ -1,8 +1,25 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.0
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost
+-- Generation Time: Dec 27, 2022 at 10:05 PM
+-- Server version: 8.0.31-0ubuntu0.22.04.1
+-- PHP Version: 8.2.0
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
 --
 -- Database: `skills`
 --
-CREATE DATABASE IF NOT EXISTS `skills` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `skills`;
 
 -- --------------------------------------------------------
 
@@ -10,7 +27,6 @@ USE `skills`;
 -- Table structure for table `appuser`
 --
 
-DROP TABLE IF EXISTS `appuser`;
 CREATE TABLE `appuser` (
   `id` int NOT NULL,
   `username` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
@@ -32,11 +48,10 @@ INSERT INTO `appuser` (`id`, `username`, `password`, `privilege_id`) VALUES
 -- Table structure for table `demo`
 --
 
-DROP TABLE IF EXISTS `demo`;
 CREATE TABLE `demo` (
   `id` int NOT NULL,
   `name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` varchar(3000) COLLATE utf8mb4_general_ci NOT NULL,
+  `description` varchar(3000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `item_id` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -54,7 +69,6 @@ INSERT INTO `demo` (`id`, `name`, `description`, `item_id`) VALUES
 -- Table structure for table `item`
 --
 
-DROP TABLE IF EXISTS `item`;
 CREATE TABLE `item` (
   `id` int NOT NULL,
   `name` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
@@ -68,7 +82,7 @@ CREATE TABLE `item` (
 --
 
 INSERT INTO `item` (`id`, `name`, `description`, `further`, `skill_id`) VALUES
-(4, 'Foreign key', 'ALTER TABLE urls\\r\\nADD CONSTRAINT fk_urls_skill_id\\r\\nFOREIGN KEY (skill_id)\\r\\nREFERENCES skill(id);', 'https://www.w3schools.com/sql/sql_ref_foreign_key.asp', 5),
+(4, 'Foreign key', 'ALTER TABLE urls ADD CONSTRAINT fk_urls_skill_id FOREIGN KEY (skill_id) REFERENCES skill(id);', 'https://www.w3schools.com/sql/sql_ref_foreign_key.asp', 5),
 (8, 'Factory Design pattern', 'The Factory Design Pattern provides a way to create objects. It involves a factory class that has a method that receives parameters and returns an object of a class.', 'https://www.geeksforgeeks.org/factory-method-design-pattern-in-java/', 4),
 (11, 'Cheat-Sheet', '', 'php-cheat-sheet.pdf', 1),
 (16, 'Rename Table', 'RENAME TABLE old_table TO new_table;', 'https://mariadb.com/kb/en/rename-table/', 5),
@@ -110,7 +124,10 @@ INSERT INTO `item` (`id`, `name`, `description`, `further`, `skill_id`) VALUES
 (60, 'OpenClassRoom', 'Tutoriel micro-services', 'https://openclassrooms.com/fr/courses/4668056-construisez-des-microservices', 36),
 (61, 'Analyse-innovation-solution', 'Curl Tutorial', 'https://analyse-innovation-solution.fr/publication/fr/php/curl-post-get-proxy-https', 36),
 (62, 'packagist.org Curl', 'Php Curl', 'https://packagist.org/packages/curl/curl', 1),
-(63, 'OpenClassRoom', 'Api Tutorial', 'https://openclassrooms.com/fr/courses/6573181-adoptez-les-api-rest-pour-vos-projets-web', 36);
+(63, 'OpenClassRoom', 'Api Tutorial', 'https://openclassrooms.com/fr/courses/6573181-adoptez-les-api-rest-pour-vos-projets-web', 36),
+(64, 'Switch to a different PHP version', 'sudo a2dismod php8.1; sudo a2enmod php8.2;', '', 3),
+(66, 'waytolearnx', 'Rest Api Tutorial', 'https://waytolearnx.com/2019/07/creer-et-utiliser-une-api-rest-en-php.html', 1),
+(67, 'waytolearnx', 'PHP Curl Tutorial', 'https://waytolearnx.com/2020/01/tutoriel-curl-en-php.html', 1);
 
 -- --------------------------------------------------------
 
@@ -118,11 +135,10 @@ INSERT INTO `item` (`id`, `name`, `description`, `further`, `skill_id`) VALUES
 -- Table structure for table `note`
 --
 
-DROP TABLE IF EXISTS `note`;
 CREATE TABLE `note` (
   `id` int NOT NULL,
-  `name` varchar(30) COLLATE utf8mb4_general_ci NOT NULL,
-  `description` varchar(300) COLLATE utf8mb4_general_ci NOT NULL
+  `name` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `description` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -133,7 +149,8 @@ INSERT INTO `note` (`id`, `name`, `description`) VALUES
 (1, 'English', 'practice one hour each day.'),
 (2, 'R&D', 'review the Java part project architecture'),
 (3, 'PHP', 'Project Tips&Notes, OOP Grafikart, Udemy OOP'),
-(11, 'Exercise', 'Do physical exercise each day, at least half an hour');
+(11, 'Exercise', 'Do physical exercise each day, at least half an hour'),
+(14, 'Project Skills Review', '. Add Urls to skills and not to Items');
 
 -- --------------------------------------------------------
 
@@ -141,11 +158,10 @@ INSERT INTO `note` (`id`, `name`, `description`) VALUES
 -- Table structure for table `privilege`
 --
 
-DROP TABLE IF EXISTS `privilege`;
 CREATE TABLE `privilege` (
   `id` int NOT NULL,
-  `name` varchar(15) COLLATE utf8mb4_general_ci NOT NULL,
-  `description` varchar(40) COLLATE utf8mb4_general_ci DEFAULT NULL
+  `name` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `description` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -162,7 +178,6 @@ INSERT INTO `privilege` (`id`, `name`, `description`) VALUES
 -- Table structure for table `skill`
 --
 
-DROP TABLE IF EXISTS `skill`;
 CREATE TABLE `skill` (
   `id` int NOT NULL,
   `name` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
@@ -192,23 +207,13 @@ INSERT INTO `skill` (`id`, `name`, `logo`) VALUES
 -- Table structure for table `url`
 --
 
-DROP TABLE IF EXISTS `url`;
 CREATE TABLE `url` (
   `id` int NOT NULL,
   `name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `url` varchar(200) COLLATE utf8mb4_general_ci NOT NULL,
-  `item_id` int DEFAULT NULL
+  `url` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `item_id` int DEFAULT NULL,
+  `skill_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `url`
---
-
-INSERT INTO `url` (`id`, `name`, `url`, `item_id`) VALUES
-(1, 'SQL Foreign Key', 'https://www.folkstalk.com/2022/09/create-foreign-key-phpmyadmin-with-code-examples.html', 4),
-(2, 'AI OpenAI', 'https://beta.openai.com/docs/quickstart/start-with-an-instruction', 11),
-(6, 'Python Sandbox in Google Colab', 'https://colab.research.google.com/drive/1PZShdlNNsHHE__y1SiWB_EVh-EDBjMXS?authuser=1', 8),
-(13, 'Php Sandbox onlinePhp Url', 'https://onlinephp.io/', 16);
 
 --
 -- Indexes for dumped tables
@@ -274,19 +279,19 @@ ALTER TABLE `appuser`
 -- AUTO_INCREMENT for table `demo`
 --
 ALTER TABLE `demo`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- AUTO_INCREMENT for table `note`
 --
 ALTER TABLE `note`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `privilege`
@@ -298,13 +303,13 @@ ALTER TABLE `privilege`
 -- AUTO_INCREMENT for table `skill`
 --
 ALTER TABLE `skill`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `url`
 --
 ALTER TABLE `url`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Constraints for dumped tables
@@ -335,3 +340,6 @@ ALTER TABLE `url`
   ADD CONSTRAINT `fk_url_item_id` FOREIGN KEY (`item_id`) REFERENCES `item` (`id`);
 COMMIT;
 
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
