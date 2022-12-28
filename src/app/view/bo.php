@@ -64,7 +64,7 @@ if($action === 'add'){
 </div>
 
 <div class="col">
-  <button type="button" class="collapsible" id="boAddUrlToItemButton">Add Url to Skill (TODO : Redesign. Currently Urls->Items)</button>
+  <button type="button" class="collapsible" id="boAddUrlToItemButton">Add Url to Item</button>
   <div class="content">
     <form class="postform" action="index.php?page=addurltoitem" method="post">
     <div class="form-group">
@@ -76,8 +76,8 @@ if($action === 'add'){
       <input type="text" class="form-control" name="url" id="url" placeholder="url">
     </div>
     <div class="form-group">
-      <label for="skill_id">Skill_id</label>
-      <input type="text" class="form-control" name="skill_id" id="skill_id" placeholder="skill_id" pattern="[0-9]{1,3}">
+      <label for="item_id">Item_id</label>
+      <input type="text" class="form-control" name="item_id" id="item_id" placeholder="item_id" pattern="[0-9]{1,3}">
     </div>
     <div class="form-check">
     </div>

@@ -41,12 +41,13 @@ echo '<div class="col-1"><form class="form-inline" method="post" action="index.p
 echo "<div class='row'>";
 if    (!is_null($item->further) && Check::isUrl($item->further)){ echo '<div class="col"><a href="'.$item->further .'" target="_blank">'.$item->description.'</a></div>'; }
 elseif(!is_null($item->further) && Check::isPdf($item->further)){ echo '<div class="col"><a href="./public/doc/'.$item->further.'" target="_blank">'.$item->description.'</a></div>'; }
-else  { echo '<li>' . $item->description . '</li>'; }
+else  { echo '<div class="col">' . $item->description . '</div>'; }
 echo "</div>";
 
 $numberDemos = count($demos);
 if($numberDemos>0){
 ?>
+<div class="container px-4 py-5" id="featured-3">
 <ul>
 	<li class="remove-bullet">Demos</li>
 	<ul>
@@ -57,6 +58,7 @@ if($numberDemos>0){
 	?>
 	</ul>
 </ul>
+</div>
 <?php
 }
 ?>
@@ -65,6 +67,7 @@ if($numberDemos>0){
 $numberUrls = count($urls);
 if($numberUrls>0){
 ?>
+<div class="container px-4 py-5" id="featured-3">
 <ul>
 	<li class="remove-bullet">Related Urls</li>
 	<ul>
@@ -75,6 +78,7 @@ if($numberUrls>0){
 	?>
 	</ul>
 </ul>
+</div>
 <?php
 }
 ?>

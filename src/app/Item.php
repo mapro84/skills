@@ -7,5 +7,7 @@ class Item extends Entity{
 
     public $name;
     public $urls;
+    public $item_id;
+    public $url;
 
 }
