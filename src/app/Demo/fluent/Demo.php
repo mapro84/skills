@@ -1,7 +1,7 @@
 <?php
 namespace src\app\Demo\fluent;
 
-use src\app\Demo\fluent\Sql;
+use src\app\Demo\fluent\QueryBuilder;
 
 class Demo {
 
@@ -11,9 +11,11 @@ class Demo {
     public function __construct(){
     }
     
-    public function demo(){
-    	$sql = new Sql([]);
-    	echo 'fluent demo';
+    public static function demo(){
+    	$queryBuilder = new QueryBuilder();
+        $queryBuilder->select('id', 'name', 'description')->from('skill', 'capability')->where('capability.name = "PHP"')->where('capability.logo = "php.png"');
+        echo '<pre><br><br>'.file_get_contents(__DIR__.'/QueryBuilder.php').'</pre>';
+    	echo $queryBuilder->__toString();
     }
     
 }

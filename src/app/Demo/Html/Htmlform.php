@@ -34,7 +34,7 @@ class Htmlform{
     }
 
     static function input($name){
-        return $this->surround('<button type="text" name='.$name.'>');
+        return $self::surround('<button type="text" name='.$name.'>');
     }
 
     public function submit(){
