@@ -23,7 +23,7 @@ class Demo {
         $res2= $pizza2->made();
 
         //get an object of Square and call its draw method.
-        $pizza3 = $this->factory->getPizza("3cheese");
+        $pizza3 = $this->factory->getPizza("3Cheese");
         $res3 = $pizza3->made();
         
         $interface = 
@@ -109,15 +109,15 @@ class PizzaFactory {
 			return null;
 		}
 		if($pizzaType === "chorizo"){
-			$class_name = "\\src\\classes\\demos\\factory\\" . "Pizza" .  ucfirst($pizzaType);
+			$class_name = "\\src\\classes\\demo\\factory\\" . "Pizza" .  ucfirst($pizzaType);
 			return new $class_name;
 			
 		} if($pizzaType === "3cheese"){
-			$class_name = "\\src\\classes\\demos\\factory\\" . "Pizza" . ucfirst($pizzaType);
+			$class_name = "\\src\\classes\\demo\\factory\\" . "Pizza" . ucfirst($pizzaType);
 			return new $class_name;
 			
 		} if($pizzaType === "margherita"){
-			$class_name = "\\src\\classes\\demos\\factory\\" . "Pizza" . ucfirst($pizzaType);
+			$class_name = "\\src\\classes\\demo\\factory\\" . "Pizza" . ucfirst($pizzaType);
 			return new  $class_name(false,$shape);
 		}
 

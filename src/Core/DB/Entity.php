@@ -11,6 +11,10 @@ class Entity{
 	public $description;
 	public $further;
 	public $skill_id;
+	public $url;
+	public $url_id;
+	public $item_id;
+	public $kill_id;
 
 
     public static function getAll($table){
@@ -18,19 +22,19 @@ class Entity{
         return DB::prepare($query, [], get_called_class());
     }
 
-    public static function find($id,$table){
+    public static function find($id,$table): mixed {
     	$query = "SELECT * FROM ". strtolower($table) ." WHERE id = ?";
     	$parameters = [$id];
     	return DB::prepare($query, $parameters, get_called_class(),true);
     }
 
-    public static function findBy($targertTable, $id, $tableCategory){
+    public static function findBy($targertTable, $id, $tableCategory): mixed {
     	$query = "SELECT * FROM ".$targertTable." WHERE {$tableCategory}_id = ?";
     	$parameters = [$id];
     	return DB::prepare($query, $parameters, get_called_class());
     }
 
-    public static function findByName($table,$name){
+    public static function findByName($table,$name): mixed {
     	$query = "SELECT * FROM ".$table." WHERE name = ?";
     	$parameters = [$name];
     	return DB::prepare($query, $parameters, get_called_class(),true);

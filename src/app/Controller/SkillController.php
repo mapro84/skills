@@ -6,6 +6,7 @@ use src\Core\Utils\Debug;
 use src\Core\Utils\Check;
 use src\Core\DB\Entity;
 use src\app\Demo;
+use src\app\Url;
 
 class SkillController extends AppController{
 	
@@ -20,8 +21,9 @@ class SkillController extends AppController{
 	public function show($skill_id) {
 		$skill = Skill::find($skill_id,'skill');
 		$items = Skill::findBy('item',$skill_id,'skill');
+		$urls = Url::findUrlsBy($skill_id,'skill');
 		$demos = $this->getDemosBySkillId($skill_id);
-		$entities = array('skill' => $skill, 'items' => $items, 'demos' => $demos);
+		$entities = array('skill' => $skill, 'items' => $items, 'demos' => $demos,'urls'=>$urls);
  		$this->render('skill',$entities);
 	}
 	

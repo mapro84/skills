@@ -5,10 +5,5 @@ error_reporting(E_ALL); //E_ALL
 
 const ROOTDIR = __DIR__;
 require_once(ROOTDIR."/vendor/autoload.php");
-
-use src\app\Demo\interface\Demo;
-$demo = new Demo();
-$demo->demo();
-
 require_once(ROOTDIR."/src/app/bootstrap.php");
 ?>

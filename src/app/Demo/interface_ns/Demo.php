@@ -1,7 +1,7 @@
 <?php
-namespace src\app\Demo\interface;
+namespace src\app\Demo\interface_ns;
 
-use src\app\Demo\interface\Session;
+use src\app\Demo\interface_ns\Session;
 
 use src\app\Demo\fluent\QueryBuilder;
 
@@ -13,7 +13,9 @@ class Demo {
         $session = new Session();
         $session->set('user','mario');
         echo $session->get('user');
-        var_dump(count($session));
+        $flash = new Flash($session);
+        $flash->set('An error happened!', 'danger');
+        echo $flash->get();
     }
     
 }

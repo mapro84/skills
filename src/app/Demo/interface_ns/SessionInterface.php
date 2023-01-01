@@ -1,5 +1,5 @@
 <?php
-namespace src\app\Demo\interface;
+namespace src\app\Demo\interface_ns;
 
 interface SessionInterface {
 	

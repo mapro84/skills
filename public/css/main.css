@@ -11,3 +11,12 @@
   .icon-link img{
     height: 40px;
   }
+
+  .demoTitle{
+    background-color: #68c6cb;
+    font-weight: bold;
+  }
+
+  .demoBody{
+    background-color: #6bcead;
+  }

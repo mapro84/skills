@@ -2,6 +2,7 @@
 namespace src\app\Controller;
 
 use src\app\Item;
+use src\app\Url;
 use src\Core\Utils\Debug;
 use src\Core\Utils\Check;
 use src\Core\DB\Entity;
@@ -23,8 +24,8 @@ class ItemController extends AppController{
 	public function show($item_id,$skill_name) {
 		$item = Item::find($item_id,'item');
 		$demos = Item::findBy('demo',$item_id,'item');
-		$urls =  Item::findBy('url',$item_id,'item');
- 		$entities = array('item' => $item, 'demos' => $demos, 'urls' => $urls, 'skill_name' => $skill_name);
+		$urls = Url::findUrlsBy($item_id,'item');
+ 		$entities = array('item' => $item, 'demos' => $demos,'urls'=>$urls,'skill_name' => $skill_name);
  		$this->render('item',$entities);
 	}
 

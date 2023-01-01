@@ -5,6 +5,7 @@ use src\Core\Utils\Check;
 $skill = $entities['skill'];
 $items = $entities['items'];
 $demos = isset($entities['demos']) ? $entities['demos'] : [];
+$urls = isset($entities['urls']) ? $entities['urls'] : [];
 ?>
 
 <div class="container px-4 py-5" id="featured-3">
@@ -87,6 +88,26 @@ if($numberDemos>0){
 	<?php
 		foreach($demos as $demo){
 			echo '<li><a href="index.php?page=demo&demo_id='.$demo->id.'" target="_blank">'.$demo->name.'</a></li>';
+		}
+	?>
+	</ul>
+</ul>
+<?php
+}
+?>
+</div>
+
+<div class="container px-4 py-5" id="featured-3">
+<?php
+$numberUrls = count($urls);
+if($numberUrls>0){
+?>
+<ul>
+	<li class="remove-bullet">Related urls</li>
+	<ul>
+	<?php
+		foreach($urls as $url){
+			echo '<li><a href="'.$url->url.'" target="_blank">'.$url->name.'</a></li>';
 		}
 	?>
 	</ul>

@@ -1,5 +1,5 @@
 <?php
-namespace src\app\Demo\interface;
+namespace src\app\Demo\interface_ns;
 
 class Session implements SessionInterface, \Countable, \ArrayAccess {
 	
@@ -7,7 +7,7 @@ class Session implements SessionInterface, \Countable, \ArrayAccess {
         session_start();
     }
 
-    public function get($key): string | null {
+    public function get($key) {
         if($_SESSION[$key] !== null){
             return $_SESSION[$key];
         }else{
