@@ -47,7 +47,7 @@ class BootstrapHtml implements Html{
     }
 
     public function addComment($content){
-        return '<span class="demoComment"> ==> '.$content.'</span>';
+        return '<span class="demoComment"> '.$content.'</span>';
       }
 
     public function addSeparator($separator='<hr>'){
