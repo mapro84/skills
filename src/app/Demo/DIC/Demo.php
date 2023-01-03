@@ -33,26 +33,31 @@ class Demo {
         $connectionClass = htmlspecialchars(file_get_contents('src/app/Demo/DIC/Connection.php'));
         $modelClass = htmlspecialchars(file_get_contents('src/app/Demo/DIC/Model.php'));
 
-        $bootstrapHtml = new BootstrapHtml('div','col demoBody','h3','h7', 'hr', true);
+        $bootstrapHtml = new BootstrapHtml('div','col demoBody', true);
 
-        $title = $bootstrapHtml->getTitle('DIC Class:');
-        $bootstrapHtml->fillData($title);
-        $bootstrapHtml->fillData($dicClass);
+        $title = $bootstrapHtml->addTitle('DIC Class:');
+        $bootstrapHtml->addData($title);
+        $bootstrapHtml->addDiv();
+        $bootstrapHtml->addData($dicClass);
+        $bootstrapHtml->endDiv();
 
-        $bootstrapHtml->addSeparator();
-        $title = $bootstrapHtml->getTitle('Connection Class:');
-        $bootstrapHtml->fillData($title);
-        $bootstrapHtml->fillData($connectionClass);
-
-        $bootstrapHtml->addSeparator();
-        $title = $bootstrapHtml->getTitle('Model Class:');
-        $bootstrapHtml->fillData($title);
-        $bootstrapHtml->fillData($modelClass);
+        $title = $bootstrapHtml->addTitle('Connection Class:');
+        $bootstrapHtml->addData($title);
+        $bootstrapHtml->addDiv();
+        $bootstrapHtml->addData($connectionClass);
+        $bootstrapHtml->endDiv();
 
         $bootstrapHtml->addSeparator();
-        $title = $bootstrapHtml->getTitle('Usage Code:');
-        $bootstrapHtml->fillData($title);
-        $bootstrapHtml->fillData('$dic = new DIC();
+        $title = $bootstrapHtml->addTitle('Model Class:');
+        $bootstrapHtml->addData($title);
+        $bootstrapHtml->addDiv();
+        $bootstrapHtml->addData($modelClass);
+        $bootstrapHtml->endDiv();
+
+        $title = $bootstrapHtml->addTitle('Usage Code:');
+        $bootstrapHtml->addData($title);
+        $bootstrapHtml->addDiv();
+        $bootstrapHtml->addData('$dic = new DIC();
         $connection = new Connection("dbname", "root", "root");
 
         // return always the same instance
@@ -64,29 +69,36 @@ class Demo {
         $dic->setFactory("Model", function () use ($dic) {
             return new Model($dic->get("Connection"));
         });');
+        $bootstrapHtml->endDiv();
+
+        $bootstrapHtml->addSeparator();
+        $title = $bootstrapHtml->addTitle('Results:');
+        $bootstrapHtml->addData($title);
+        $bootstrapHtml->addSeparator();
         
-        $bootstrapHtml->addSeparator();
-        $title = $bootstrapHtml->getTitle('Results:');
-        $bootstrapHtml->fillData($title);
-
-        $bootstrapHtml->addSeparator();
-        $title = $bootstrapHtml->getTitle('Object returned by $dic->get(Connection"):');
-        $bootstrapHtml->fillData($title);
+        $title = $bootstrapHtml->addTitle('Object returned by $dic->get(Connection"):');
+        $bootstrapHtml->addData($title);
         $content = print_r($dic->getInstance('Connection'), true);
-        $bootstrapHtml->fillData($content);
+        $bootstrapHtml->addDiv();
+        $bootstrapHtml->addData($content);
+        $bootstrapHtml->endDiv();
 
         $bootstrapHtml->addSeparator();
-        $title = $bootstrapHtml->getTitle('Object returned by  $dic->get("Model"):');
-        $bootstrapHtml->fillData($title);
+        $title = $bootstrapHtml->addTitle('Object returned by  $dic->get("Model"):');
+        $bootstrapHtml->addData($title);
         $content = print_r($dic->getFactory('Model'), true);
-        $bootstrapHtml->fillData($content);
+        $bootstrapHtml->addDiv();
+        $bootstrapHtml->addData($content);
+        $bootstrapHtml->endDiv();
 
         $bootstrapHtml->addSeparator();
-        $title = $bootstrapHtml->getTitle('Object returned by $instance = $dic->get("Connection"):');
-        $bootstrapHtml->fillData($title);
+        $title = $bootstrapHtml->addTitle('Object returned by $instance = $dic->get("Connection"):');
+        $bootstrapHtml->addData($title);
         $instance = $dic->getInstance('Connection');
         $content = print_r($instance, true);
-        $bootstrapHtml->fillData($content);
+        $bootstrapHtml->addDiv();
+        $bootstrapHtml->addData($content);
+        $bootstrapHtml->endDiv();
 
         $bootstrapHtml->endData();
 

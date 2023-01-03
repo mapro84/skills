@@ -3,11 +3,7 @@ namespace src\Core\Html;
 
 Interface Html{
 
-    /**
-     * May be p, span, div...
-     * @param mixed $htmlSurrounder
-     * @return void
-     */
-    public function setCharacter($title, $content);
+    public function startData();
+    public function endData();
 
 }

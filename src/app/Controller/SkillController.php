@@ -53,7 +53,9 @@ class SkillController extends AppController{
 		$skill = Skill::findByName('skill',$skill_name);
 		$skill_id = $skill->id;
 		$items = Entity::findBy('item',$skill_id,'skill');
-		$entities = array('skill' => $skill, 'items' => $items);
+		$urls = Url::findUrlsBy($skill_id,'skill');
+		$demos = $this->getDemosBySkillId($skill_id);
+		$entities = array('skill' => $skill, 'items' => $items,'demos' => $demos,'urls'=>$urls);
 		$this->render('skill',$entities);
 	}
 	

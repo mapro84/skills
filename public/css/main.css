@@ -15,8 +15,39 @@
   .demoTitle{
     background-color: #68c6cb;
     font-weight: bold;
+    padding: 5px 5px;
+    border-radius: 10px;
+    margin: 0 10px;
+    font-size: 16px;
   }
 
   .demoBody{
     background-color: #6bcead;
+    border-radius: 10px;
+    font-size: 15px;
+    padding: 5px 5px;
+  }
+
+  .demoResult{
+    background-color: #72dbe9;
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 0 10px;
+    margin: 0 0 10px 15px;
+  }
+
+  .demoComment{
+    background-color: #acc552;
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 0 10px;
+    margin: 0 0 10px 15px;
+  }
+
+  .demoCode{
+    background-color: #c5c0c0;
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 0 10px 20px 10px;
+    margin: 10px 50px 10px 50px;
   }

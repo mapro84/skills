@@ -22,19 +22,19 @@ class Entity{
         return DB::prepare($query, [], get_called_class());
     }
 
-    public static function find($id,$table): mixed {
+    public static function find($id,$table) {
     	$query = "SELECT * FROM ". strtolower($table) ." WHERE id = ?";
     	$parameters = [$id];
     	return DB::prepare($query, $parameters, get_called_class(),true);
     }
 
-    public static function findBy($targertTable, $id, $tableCategory): mixed {
+    public static function findBy($targertTable, $id, $tableCategory) {
     	$query = "SELECT * FROM ".$targertTable." WHERE {$tableCategory}_id = ?";
     	$parameters = [$id];
     	return DB::prepare($query, $parameters, get_called_class());
     }
 
-    public static function findByName($table,$name): mixed {
+    public static function findByName($table,$name) {
     	$query = "SELECT * FROM ".$table." WHERE name = ?";
     	$parameters = [$name];
     	return DB::prepare($query, $parameters, get_called_class(),true);

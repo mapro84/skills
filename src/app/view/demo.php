@@ -1,9 +1,8 @@
 <?php
-
 $demo = $entities['demo'];
 $demoContent = $entities['demoContent'];
 
-echo $demo->name . ' ' . $demo->description;
+echo '<div class="demoTitle row mt-5">'.$demo->name . ': ' . $demo->description.'</div>';
 
 echo '<br><br>';
 
