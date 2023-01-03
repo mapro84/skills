@@ -1,8 +1,8 @@
 <?php
 
-namespace src\app\Demo\factory;
+namespace src\app\Demo\Factory;
 
-class PizzaChorizo Implements Pizza{
+class Pizza3Cheese Implements Pizza{
 	
 	public function made(){
 		return 'Object '.__CLASS__;

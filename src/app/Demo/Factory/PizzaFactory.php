@@ -1,7 +1,7 @@
 <?php
-namespace src\app\Demo\factory;
+namespace src\app\Demo\Factory;
 
-use src\app\Demo\factory\Shape;
+use src\app\Demo\Factory\Shape;
 
 class PizzaFactory {
 	
@@ -17,15 +17,15 @@ class PizzaFactory {
 			return null;
 		}
 		if($pizzaType === "chorizo"){
-			$class_name = "\\src\\app\\Demo\\factory\\" . "Pizza" .  ucfirst($pizzaType);
+			$class_name = "\\src\\app\\Demo\\Factory\\" . "Pizza" .  ucfirst($pizzaType);
 			return new $class_name;
 			
 		} if($pizzaType === "3Cheese"){
-			$class_name = "\\src\\app\\Demo\\factory\\" . "Pizza" . ucfirst($pizzaType);
+			$class_name = "\\src\\app\\Demo\\Factory\\" . "Pizza" . ucfirst($pizzaType);
 			return new $class_name;
 			
 		} if($pizzaType === "margherita"){
-			$class_name = "\\src\\app\\Demo\\factory\\" . "Pizza" . ucfirst($pizzaType);
+			$class_name = "\\src\\app\\Demo\\Factory\\" . "Pizza" . ucfirst($pizzaType);
 			return new  $class_name(false,$shape);
 		}
         return null;

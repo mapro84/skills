@@ -1,6 +1,6 @@
 <?php
 
-namespace src\app\Demo\factory;
+namespace src\app\Demo\Factory;
 
 class Shape {
 	

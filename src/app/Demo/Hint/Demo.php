@@ -41,9 +41,10 @@ class Demo {
         $bootstrapHtml->addDiv();
         $bootstrapHtml->addData('$hint->add(5,4.7);');
         $content = null;
+        // Trigger an Error
         $content = $class->add(5,4.7);
         $bootstrapHtml->addData($bootstrapHtml->addResult($content));
-        $bootstrapHtml->addData($bootstrapHtml->addComment('Convert "4.7" from float to integer'));
+        $bootstrapHtml->addData($bootstrapHtml->addComment('Deprecated: Implicit conversion from float 4.7 to int loses precision ...'));
         $bootstrapHtml->endDiv();
 
         $bootstrapHtml->addDiv();
@@ -57,9 +58,10 @@ class Demo {
         $bootstrapHtml->addDiv();
         $bootstrapHtml->addData('$hint->add(5,"10four");');
         $content = null;
-        $content = $class->add(5,"10four");
+        // Trigger fatal Error
+        // $content = $class->add(5,"10four");
         $bootstrapHtml->addData($bootstrapHtml->addResult($content));
-        $bootstrapHtml->addData($bootstrapHtml->addComment('Notice: A non well formed numeric value encountered in...'));
+        $bootstrapHtml->addData($bootstrapHtml->addComment('Fatal error: Uncaught TypeError: ...Hint::add(): Argument #2 ($y) must be of type int, string given'));
         $bootstrapHtml->endDiv();
 
         $bootstrapHtml->addDiv();
@@ -70,8 +72,6 @@ class Demo {
         $bootstrapHtml->addData($bootstrapHtml->addResult($content));
         $bootstrapHtml->addData($bootstrapHtml->addComment('Fatal error: Uncaught TypeError: Argument 2 ... must be of the type int, string given,...'));
         $bootstrapHtml->endDiv();
-
-        echo $class->upper(null);
 
         $bootstrapHtml->endData();
         return $bootstrapHtml->getData();

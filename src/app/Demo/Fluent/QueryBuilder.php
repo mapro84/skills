@@ -1,5 +1,5 @@
 <?php
-namespace src\app\Demo\fluent;
+namespace src\app\Demo\Fluent;
 
 class QueryBuilder implements \Stringable {
 	

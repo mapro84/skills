@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 03, 2023 at 08:26 PM
--- Server version: 8.0.31
--- PHP Version: 7.4.33
+-- Generation Time: Jan 03, 2023 at 11:45 PM
+-- Server version: 8.0.31-0ubuntu0.22.04.1
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -61,9 +61,11 @@ CREATE TABLE `demo` (
 
 INSERT INTO `demo` (`id`, `name`, `description`, `item_id`) VALUES
 (8, 'Factory', 'Design pattern', 8),
-(9, 'Fluent', 'Design Pattern', 55),
-(12, 'DIC', 'Dependency Injection Container Pattern', 69),
-(13, 'Hint', 'The type hints ensure that PHP will check the type of a value at the call time and throw a TypeError if there is a mismatch.', 74);
+(12, 'DIC', 'Dependency Injection Container Pattern\'', 69),
+(13, 'Hint', 'The type hints ensure that PHP will check the type of a value at the call time and throw a TypeError if there is a mismatch.', 76),
+(14, 'Fluent', 'A fluent interface provides an easy-readable. Using this pattern results in code that can be read nearly as human language.', 55),
+(15, 'Facade', 'Facade is a structural design pattern that provides a simplified interface to a library, a framework, or any other complex set of classes.', 77),
+(16, 'Closure', 'Anonymous functions yield objects of this type. This class has methods that allow further control of the anonymous function after it has been created. ', 78);
 
 -- --------------------------------------------------------
 
@@ -85,7 +87,7 @@ CREATE TABLE `item` (
 
 INSERT INTO `item` (`id`, `name`, `description`, `further`, `skill_id`) VALUES
 (4, 'Foreign key', 'ALTER TABLE urls ADD CONSTRAINT fk_urls_skill_id FOREIGN KEY (skill_id) REFERENCES skill(id);', 'https://www.w3schools.com/sql/sql_ref_foreign_key.asp', 5),
-(8, 'Factory Design pattern', 'The Factory Design Pattern provides a way to create objects. It involves a factory class that has a method that receives parameters and returns an object of a class.', 'https://www.geeksforgeeks.org/factory-method-design-pattern-in-java/', 4),
+(8, 'Factory Design pattern', 'The Factory Design Pattern provides a way to create objects. It involves a factory class that has a method that receives parameters and returns an object of a class.', 'https://refactoring.guru/design-patterns/factory-method/php/example#lang-features', 4),
 (11, 'Cheat-Sheet', '', 'php-cheat-sheet.pdf', 1),
 (16, 'Rename Table', 'RENAME TABLE old_table TO new_table;', 'https://mariadb.com/kb/en/rename-table/', 5),
 (17, 'Current directory path', '__DIR__', 'https://www.tutorialspoint.com/how-to-use-dir-in-php', 1),
@@ -118,7 +120,7 @@ INSERT INTO `item` (`id`, `name`, `description`, `further`, `skill_id`) VALUES
 (52, 'Linode', 'Cheat in command line', 'https://www.linode.com/docs/guides/linux-cheat-command/', 3),
 (53, 'Sheetformula', 'AI Excel Formula ', 'https://sheetformula.com/genformula.html', 40),
 (54, 'Copocorp', 'Html Special characters', 'http://copocorp.free.fr/caracteresSpeciaux/', 7),
-(55, 'Fluent', 'Design pattern', 'https://designpatternsphp.readthedocs.io/en/latest/Structural/FluentInterface/README.html', 4),
+(55, 'Fluent', 'The Builder design pattern is not the same as the Fluent Interface idiom (that relies on method chaining), although Rust developers sometimes use those terms interchangeably.\r\nFluent Interface is a way to chain methods for constructing or modifying an object. \r\nWhile the Builder pattern also suggests constructing object step by step, it also lets you build different types of products using the same construction process.\r\n', 'https://designpatternsphp.readthedocs.io/en/latest/Structural/FluentInterface/README.html', 4),
 (56, 'Alwasdata', 'Web Hosting, Administration, Api', 'https://admin.alwaysdata.com/', 36),
 (57, 'Demo.filestash.app', 'Ftp online', 'https://demo.filestash.app/files/', 36),
 (58, 'Reqbin.com', 'Curl, Rest & SOAP API Online, Python, PHP, Javascript, Java, Xml, Json', 'https://reqbin.com/curl', 36),
@@ -130,13 +132,16 @@ INSERT INTO `item` (`id`, `name`, `description`, `further`, `skill_id`) VALUES
 (64, 'Switch to a different PHP version', 'sudo a2dismod php8.1; sudo a2enmod php8.2;', '', 3),
 (66, 'waytolearnx', 'Rest Api Tutorial', 'https://waytolearnx.com/2019/07/creer-et-utiliser-une-api-rest-en-php.html', 1),
 (67, 'waytolearnx', 'PHP Curl Tutorial', 'https://waytolearnx.com/2020/01/tutoriel-curl-en-php.html', 1),
-(69, 'Dependency Injection', 'Design Pattern', 'https://php.developpez.com/tutoriels/php-la-bonne-pratique/?page=injection-de-dependances', 4),
+(69, 'Dependency Injection', 'High-level classes shouldn’t depend on low-level classes. Both should depend on abstractions. ', 'https://php.developpez.com/tutoriels/php-la-bonne-pratique/?page=injection-de-dependances', 4),
 (70, 'Chmod', 'Online Chmod Calculator', 'https://chmod-calculator.com/', 3),
 (71, 'Chown', 'Chown', 'https://www.computerhope.com/unix/uchown.htm\r\n', 3),
 (72, 'Diplay errors', 'Diplay PHP errors', 'https://stackify.com/display-php-errors/', 1),
 (73, 'Ebale or disable an apache Module', 'a2enmod, a2dismod - enable or disable an apache2 module', 'https://manpages.ubuntu.com/manpages/trusty/man8/a2enmod.8.html', 44),
-(74, 'Hint', 'The type hints ensure that PHP will check the type of a value at the call time and throw a TypeError if there is a mismatch.', 'https://www.phptutorial.net/php-tutorial/php-type-hints/', 1),
-(75, 'mixed type', 'All of these types: object|resource|array|string|int|float|bool|null\r\nThe mixed type accepts every value. (equivalent to the union type) object|resource|array|string|float|int|bool|null. Available as of PHP 8.0.0. ', 'https://www.php.net/manual/en/language.types.mixed.php', 1);
+(74, 'PHP8 News', 'What\'s new in PHP8', 'https://kinsta.com/fr/blog/php-8/#abstract-trait-methods', 1),
+(75, 'mixed type', 'All of these types: object|resource|array|string|int|float|bool|null\r\nThe mixed type accepts every value. (equivalent to the union type) object|resource|array|string|float|int|bool|null. Available as of PHP 8.0.0. ', 'https://www.php.net/manual/en/language.types.mixed.php', 1),
+(76, 'Hint', 'The type hints ensure that PHP will check the type of a value at the call time and throw a TypeError if there is a mismatch.', 'https://www.phptutorial.net/php-tutorial/php-type-hints/', 1),
+(77, 'Facade', 'Facade is a structural design pattern that provides a simplified interface to a library, a framework, or any other complex set of classes.', 'https://refactoring.guru/design-patterns/facade/php/example', 4),
+(78, 'Closure', 'Anonymous functions yield objects of this type. This class has methods that allow further control of the anonymous function after it has been created. ', 'https://www.php.net/manual/en/class.closure.php', 4);
 
 -- --------------------------------------------------------
 
@@ -231,7 +236,8 @@ CREATE TABLE `url` (
 INSERT INTO `url` (`id`, `name`, `url`) VALUES
 (1, 'Dependency Injection Design Pattern', 'https://connect.ed-diamond.com/GNU-Linux-Magazine/glmf-208/demystifier-l-injection-de-dependances-en-php'),
 (2, 'Dependency Injection Design Pattern Php-DI', 'https://php-di.org/'),
-(3, 'Closure', 'https://tuto2.dev/tutoriel/qu-est-ce-qu-une-closure');
+(3, 'Closure', 'https://tuto2.dev/tutoriel/qu-est-ce-qu-une-closure'),
+(4, 'Design Patterns', 'https://refactoring.guru/design-patterns');
 
 -- --------------------------------------------------------
 
@@ -255,7 +261,8 @@ INSERT INTO `url_skill_item` (`id`, `url_id`, `skill_id`, `item_id`) VALUES
 (4, 1, 4, NULL),
 (5, 2, 4, NULL),
 (6, 1, 1, NULL),
-(7, 2, 1, NULL);
+(7, 2, 1, NULL),
+(8, 4, 4, NULL);
 
 --
 -- Indexes for dumped tables
@@ -329,13 +336,13 @@ ALTER TABLE `appuser`
 -- AUTO_INCREMENT for table `demo`
 --
 ALTER TABLE `demo`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
 -- AUTO_INCREMENT for table `note`
@@ -359,13 +366,13 @@ ALTER TABLE `skill`
 -- AUTO_INCREMENT for table `url`
 --
 ALTER TABLE `url`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `url_skill_item`
 --
 ALTER TABLE `url_skill_item`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables
