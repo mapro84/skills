@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 27, 2022 at 10:05 PM
--- Server version: 8.0.31-0ubuntu0.22.04.1
--- PHP Version: 8.2.0
+-- Generation Time: Jan 03, 2023 at 08:26 PM
+-- Server version: 8.0.31
+-- PHP Version: 7.4.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -61,7 +61,9 @@ CREATE TABLE `demo` (
 
 INSERT INTO `demo` (`id`, `name`, `description`, `item_id`) VALUES
 (8, 'Factory', 'Design pattern', 8),
-(9, 'Fluent', 'Design Pattern', 55);
+(9, 'Fluent', 'Design Pattern', 55),
+(12, 'DIC', 'Dependency Injection Container Pattern', 69),
+(13, 'Hint', 'The type hints ensure that PHP will check the type of a value at the call time and throw a TypeError if there is a mismatch.', 74);
 
 -- --------------------------------------------------------
 
@@ -127,7 +129,14 @@ INSERT INTO `item` (`id`, `name`, `description`, `further`, `skill_id`) VALUES
 (63, 'OpenClassRoom', 'Api Tutorial', 'https://openclassrooms.com/fr/courses/6573181-adoptez-les-api-rest-pour-vos-projets-web', 36),
 (64, 'Switch to a different PHP version', 'sudo a2dismod php8.1; sudo a2enmod php8.2;', '', 3),
 (66, 'waytolearnx', 'Rest Api Tutorial', 'https://waytolearnx.com/2019/07/creer-et-utiliser-une-api-rest-en-php.html', 1),
-(67, 'waytolearnx', 'PHP Curl Tutorial', 'https://waytolearnx.com/2020/01/tutoriel-curl-en-php.html', 1);
+(67, 'waytolearnx', 'PHP Curl Tutorial', 'https://waytolearnx.com/2020/01/tutoriel-curl-en-php.html', 1),
+(69, 'Dependency Injection', 'Design Pattern', 'https://php.developpez.com/tutoriels/php-la-bonne-pratique/?page=injection-de-dependances', 4),
+(70, 'Chmod', 'Online Chmod Calculator', 'https://chmod-calculator.com/', 3),
+(71, 'Chown', 'Chown', 'https://www.computerhope.com/unix/uchown.htm\r\n', 3),
+(72, 'Diplay errors', 'Diplay PHP errors', 'https://stackify.com/display-php-errors/', 1),
+(73, 'Ebale or disable an apache Module', 'a2enmod, a2dismod - enable or disable an apache2 module', 'https://manpages.ubuntu.com/manpages/trusty/man8/a2enmod.8.html', 44),
+(74, 'Hint', 'The type hints ensure that PHP will check the type of a value at the call time and throw a TypeError if there is a mismatch.', 'https://www.phptutorial.net/php-tutorial/php-type-hints/', 1),
+(75, 'mixed type', 'All of these types: object|resource|array|string|int|float|bool|null\r\nThe mixed type accepts every value. (equivalent to the union type) object|resource|array|string|float|int|bool|null. Available as of PHP 8.0.0. ', 'https://www.php.net/manual/en/language.types.mixed.php', 1);
 
 -- --------------------------------------------------------
 
@@ -150,7 +159,8 @@ INSERT INTO `note` (`id`, `name`, `description`) VALUES
 (2, 'R&D', 'review the Java part project architecture'),
 (3, 'PHP', 'Project Tips&Notes, OOP Grafikart, Udemy OOP'),
 (11, 'Exercise', 'Do physical exercise each day, at least half an hour'),
-(14, 'Project Skills Review', '. Add Urls to skills and not to Items');
+(14, 'Project Skills Review', '. Add Urls to skills and not to Items'),
+(15, 'Program', '<ul><li>Microservices</li><li>New in Php8</li><li>Patterns</li><li>Router</li><li>Dependance container</li><li>Api Authentication</li><li>SOLID</li></ul>');
 
 -- --------------------------------------------------------
 
@@ -199,7 +209,8 @@ INSERT INTO `skill` (`id`, `name`, `logo`) VALUES
 (36, 'IT', 'IT.png'),
 (37, 'Java', 'java.png'),
 (38, 'English', 'english-learning.png'),
-(40, 'Excel', 'excel.png');
+(40, 'Excel', 'excel.png'),
+(44, 'Apache', 'apache.png');
 
 -- --------------------------------------------------------
 
@@ -210,10 +221,41 @@ INSERT INTO `skill` (`id`, `name`, `logo`) VALUES
 CREATE TABLE `url` (
   `id` int NOT NULL,
   `name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `url` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `item_id` int DEFAULT NULL,
-  `skill_id` int NOT NULL
+  `url` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `url`
+--
+
+INSERT INTO `url` (`id`, `name`, `url`) VALUES
+(1, 'Dependency Injection Design Pattern', 'https://connect.ed-diamond.com/GNU-Linux-Magazine/glmf-208/demystifier-l-injection-de-dependances-en-php'),
+(2, 'Dependency Injection Design Pattern Php-DI', 'https://php-di.org/'),
+(3, 'Closure', 'https://tuto2.dev/tutoriel/qu-est-ce-qu-une-closure');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `url_skill_item`
+--
+
+CREATE TABLE `url_skill_item` (
+  `id` int NOT NULL,
+  `url_id` int NOT NULL,
+  `skill_id` int DEFAULT NULL,
+  `item_id` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `url_skill_item`
+--
+
+INSERT INTO `url_skill_item` (`id`, `url_id`, `skill_id`, `item_id`) VALUES
+(3, 3, 1, NULL),
+(4, 1, 4, NULL),
+(5, 2, 4, NULL),
+(6, 1, 1, NULL),
+(7, 2, 1, NULL);
 
 --
 -- Indexes for dumped tables
@@ -262,8 +304,16 @@ ALTER TABLE `skill`
 -- Indexes for table `url`
 --
 ALTER TABLE `url`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `url_skill_item`
+--
+ALTER TABLE `url_skill_item`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_url_item_id` (`item_id`);
+  ADD KEY `fk_url_skill_item_skill_id` (`skill_id`),
+  ADD KEY `fk_url_skill_item_item_id` (`item_id`),
+  ADD KEY `fk_url_skill_item_url_id` (`url_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -279,19 +329,19 @@ ALTER TABLE `appuser`
 -- AUTO_INCREMENT for table `demo`
 --
 ALTER TABLE `demo`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
 
 --
 -- AUTO_INCREMENT for table `note`
 --
 ALTER TABLE `note`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `privilege`
@@ -303,13 +353,19 @@ ALTER TABLE `privilege`
 -- AUTO_INCREMENT for table `skill`
 --
 ALTER TABLE `skill`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `url`
 --
 ALTER TABLE `url`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `url_skill_item`
+--
+ALTER TABLE `url_skill_item`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables
@@ -334,10 +390,12 @@ ALTER TABLE `item`
   ADD CONSTRAINT `item_ibfk_1` FOREIGN KEY (`skill_id`) REFERENCES `skill` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `url`
+-- Constraints for table `url_skill_item`
 --
-ALTER TABLE `url`
-  ADD CONSTRAINT `fk_url_item_id` FOREIGN KEY (`item_id`) REFERENCES `item` (`id`);
+ALTER TABLE `url_skill_item`
+  ADD CONSTRAINT `fk_url_skill_item_item_id` FOREIGN KEY (`item_id`) REFERENCES `item` (`id`),
+  ADD CONSTRAINT `fk_url_skill_item_skill_id` FOREIGN KEY (`skill_id`) REFERENCES `skill` (`id`),
+  ADD CONSTRAINT `fk_url_skill_item_url_id` FOREIGN KEY (`url_id`) REFERENCES `url` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
