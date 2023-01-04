@@ -87,7 +87,7 @@ if($action === 'add'){
 </div>
 
 <div class="col">
-  <button type="button" class="collapsible" id="boAddUrlToItemButton">Add Demo to Item</button>
+  <button type="button" class="collapsible" id="boAddDemoToItemButton">Add Demo to Item</button>
   <div class="content">
     <form class="postform" action="index.php?page=adddemotoitem" method="post">
     <div class="form-group">
@@ -110,7 +110,7 @@ if($action === 'add'){
 </div>
 
 <div class="col">
-  <button type="button" class="collapsible" id="boAddUrlToItemButton">Add Note</button>
+  <button type="button" class="collapsible" id="boAddNoteButton">Add Note</button>
   <div class="content">
     <form class="postform" action="index.php?page=addnote" method="post">
     <div class="form-group">
@@ -266,6 +266,46 @@ for (i = 0; i < coll.length; i++) {
       content.style.display = "block";
     }
   });
+}
+
+boAddSkillButton = document.getElementById('boAddSkillButton');
+boAddSkillButton.addEventListener('click', e => {});
+boAddSkillButton.dispatchEvent(new Event('click'));
+boAddSkillButton.dispatchEvent(new Event('click'));
+function clickEvent() {
+    console.log("Click Event triggered")
+} 
+
+boAddItemButton = document.getElementById('boAddItemButton');
+boAddItemButton.addEventListener('click', e => {});
+boAddItemButton.dispatchEvent(new Event('click'));
+boAddItemButton.dispatchEvent(new Event('click'));
+function clickEvent() {
+    console.log("Click Event triggered")
+} 
+
+boAddUrlToItemButton = document.getElementById('boAddUrlToItemButton');
+boAddUrlToItemButton.addEventListener('click', e => {});
+boAddUrlToItemButton.dispatchEvent(new Event('click'));
+boAddUrlToItemButton.dispatchEvent(new Event('click'));
+function clickEvent() {
+    console.log("Click Event triggered")
+}
+
+boAddDemoToItemButton = document.getElementById('boAddDemoToItemButton');
+boAddDemoToItemButton.addEventListener('click', e => {});
+boAddDemoToItemButton.dispatchEvent(new Event('click'));
+boAddDemoToItemButton.dispatchEvent(new Event('click'));
+function clickEvent() {
+    console.log("Click Event triggered")
+}
+
+boAddNoteButton = document.getElementById('boAddNoteButton');
+boAddNoteButton.addEventListener('click', e => {});
+boAddNoteButton.dispatchEvent(new Event('click'));
+boAddNoteButton.dispatchEvent(new Event('click'));
+function clickEvent() {
+    console.log("Click Event triggered")
 }
 </script>
 

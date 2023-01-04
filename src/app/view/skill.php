@@ -8,7 +8,7 @@ $demos = isset($entities['demos']) ? $entities['demos'] : [];
 $urls = isset($entities['urls']) ? $entities['urls'] : [];
 ?>
 
-<div class="container px-4 py-5" id="featured-3">
+<div class="container" id="featured-3">
 <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 <div class="head-menu collapse navbar-collapse" id="navbarSupportedContent">
@@ -24,13 +24,12 @@ echo '<li><form class="form-inline" method="post" action="index.php?page=deletes
 // <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
 // <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 // </form>';
-echo "<hr>";
 ?>
 
 <!-- 
 Ex button inline	
 
-<div class="input-group mb-3">
+<div class="input-group mb-2">
   <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
   <div class="input-group-append">
     <button class="btn btn-outline-secondary" type="button">Button</button>
@@ -43,36 +42,38 @@ Ex button inline
 </div>
 </div>
 
-<div class="container px-4 py-5" id="featured-3">
+<div class="container" id="featured-3">
+<!-- px-4 py-5 -->
 <?php
 foreach($items as $item):
 
 if    (!is_null($item->further) && Check::isUrl($item->further)){ 
-	echo "<div class='row mb-3'>";
+	echo "<div class='row mb-2'>";
 	echo '<div style="text-align: left" class="col-4"><a href="'.$item->further .'" target="_blank">'.$item->name.'</a>'.'</div>';
 	echo '<div style="text-align: left" class="col-8">'.$item->description.'</div>';
 	echo "</div>";
 }
 elseif(!is_null($item->further) && Check::isPdf($item->further)){ 
-	echo "<div class='row mb-3'>";
+	echo "<div class='row mb-2'>";
 	echo '<div style="text-align: left" class="col"><a href="./public/doc/'.$item->further.'" target="_blank">'.$item->name.'</a></div>';
 	echo '<div style="text-align: left" class="col-8">'.$item->description.'</div>';
 	echo "</div>";
+} else {
+		//for long description without url or doc
+// elseif(strlen($item->description) < 5){ 
+		echo "<div class='row mb-2'>";
+		echo '<div style="text-align: left"  class="col">' . $item->name . '</div>';
+		echo '<div style="text-align: left" class="col-8">' . $item->description . '</div>';
+		echo "</div>";
+		// }
+// else{
+// 	echo "<div class='row mb-2'>";
+// 	echo '<div style="text-align: left"  class="col">'.$item->name.'</div>';
+// 	// echo '<div style="text-align: left" class="col-8">'.substr($item->description,0,50).'...</div>';
+// 	echo '<div style="text-align: left"  class="col-8"><a href="index.php?page=item&itemid='.$item->id.'&skill_name='.$skill->name.'">'.substr($item->description,0,50).'...</a></div>';
+// 	echo "</div>";
+// }
 }
-//for long description without url or doc
-elseif(strlen($item->description) < 5){ 
-	echo "<div class='row mb-3'>";
-	echo '<div style="text-align: left"  class="col">'.$item->name.'</div>';
-	echo '<div style="text-align: left" class="col-8">'.$item->description.'</div>';
-	echo "</div>";
-}else{
-	echo "<div class='row mb-3'>";
-	echo '<div style="text-align: left"  class="col">'.$item->name.'</div>';
-	// echo '<div style="text-align: left" class="col-8">'.substr($item->description,0,50).'...</div>';
-	echo '<div style="text-align: left"  class="col-8"><a href="index.php?page=item&itemid='.$item->id.'&skill_name='.$skill->name.'">'.substr($item->description,0,50).'...</a></div>';
-	echo "</div>";
-}
-
 endforeach;
 ?>
 </div>

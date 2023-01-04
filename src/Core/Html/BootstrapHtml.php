@@ -39,15 +39,17 @@ class BootstrapHtml implements Html{
     }
 
     public function addTitle($title){
-        return "<div class='demoTitle'>{$title}</div>";
+        $this->data .= "<div class='demoTitle'>{$title}</div>";
     }
 
-    public function addResult($content){
-      return '<span class="demoResult"> ==> '.$content.'</span>';
+    public function addResult($content, $inline = true){
+        $result =  $inline === true ? '<span class="demoResult"> ==> '.$content.'</span>' : '==> '.$content;
+        $this->data .= $result;
     }
 
-    public function addComment($content){
-        return '<span class="demoComment"> '.$content.'</span>';
+    public function addComment($content, $inline = true){
+        $result =  $inline === true ? '<span class="demoComment"> '.$content.'</span>' : '==> '.$content;
+        $this->data .= $result;
       }
 
     public function addSeparator($separator='<hr>'){
