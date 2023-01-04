@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 03, 2023 at 11:45 PM
+-- Generation Time: Jan 04, 2023 at 10:37 PM
 -- Server version: 8.0.31-0ubuntu0.22.04.1
 -- PHP Version: 8.2.0
 
@@ -65,7 +65,8 @@ INSERT INTO `demo` (`id`, `name`, `description`, `item_id`) VALUES
 (13, 'Hint', 'The type hints ensure that PHP will check the type of a value at the call time and throw a TypeError if there is a mismatch.', 76),
 (14, 'Fluent', 'A fluent interface provides an easy-readable. Using this pattern results in code that can be read nearly as human language.', 55),
 (15, 'Facade', 'Facade is a structural design pattern that provides a simplified interface to a library, a framework, or any other complex set of classes.', 77),
-(16, 'Closure', 'Anonymous functions yield objects of this type. This class has methods that allow further control of the anonymous function after it has been created. ', 78);
+(16, 'Closure', 'Anonymous functions yield objects of this type. This class has methods that allow further control of the anonymous function after it has been created. ', 78),
+(17, 'PhpNews', 'What\'s new in PHP from 7.0', 74);
 
 -- --------------------------------------------------------
 
@@ -117,7 +118,7 @@ INSERT INTO `item` (`id`, `name`, `description`, `further`, `skill_id`) VALUES
 (49, 'Hackerrank', 'Coding Test', 'https://www.hackerrank.com/', 36),
 (50, 'App.programiz.pro', 'Tutorial', 'https://app.programiz.pro/', 2),
 (51, 'OPenclassroom', 'Tutorial', 'https://openclassrooms.com/fr/courses/7771531-decouvrez-les-librairies-python-pour-la-data-science/7857178-creez-votre-premier-data-frame-avec-pandas', 2),
-(52, 'Linode', 'Cheat in command line', 'https://www.linode.com/docs/guides/linux-cheat-command/', 3),
+(52, 'Linode Cheat', 'Cheat in command line', 'https://www.linode.com/docs/guides/linux-cheat-command/', 3),
 (53, 'Sheetformula', 'AI Excel Formula ', 'https://sheetformula.com/genformula.html', 40),
 (54, 'Copocorp', 'Html Special characters', 'http://copocorp.free.fr/caracteresSpeciaux/', 7),
 (55, 'Fluent', 'The Builder design pattern is not the same as the Fluent Interface idiom (that relies on method chaining), although Rust developers sometimes use those terms interchangeably.\r\nFluent Interface is a way to chain methods for constructing or modifying an object. \r\nWhile the Builder pattern also suggests constructing object step by step, it also lets you build different types of products using the same construction process.\r\n', 'https://designpatternsphp.readthedocs.io/en/latest/Structural/FluentInterface/README.html', 4),
@@ -129,7 +130,7 @@ INSERT INTO `item` (`id`, `name`, `description`, `further`, `skill_id`) VALUES
 (61, 'Analyse-innovation-solution', 'Curl Tutorial', 'https://analyse-innovation-solution.fr/publication/fr/php/curl-post-get-proxy-https', 36),
 (62, 'packagist.org Curl', 'Php Curl', 'https://packagist.org/packages/curl/curl', 1),
 (63, 'OpenClassRoom', 'Api Tutorial', 'https://openclassrooms.com/fr/courses/6573181-adoptez-les-api-rest-pour-vos-projets-web', 36),
-(64, 'Switch to a different PHP version', 'sudo a2dismod php8.1; sudo a2enmod php8.2;', '', 3),
+(64, 'Switch to a different PHP version', 'sudo a2dismod php8.1;\r\n<br>sudo a2enmod php8.2;', '', 3),
 (66, 'waytolearnx', 'Rest Api Tutorial', 'https://waytolearnx.com/2019/07/creer-et-utiliser-une-api-rest-en-php.html', 1),
 (67, 'waytolearnx', 'PHP Curl Tutorial', 'https://waytolearnx.com/2020/01/tutoriel-curl-en-php.html', 1),
 (69, 'Dependency Injection', 'High-level classes shouldn’t depend on low-level classes. Both should depend on abstractions. ', 'https://php.developpez.com/tutoriels/php-la-bonne-pratique/?page=injection-de-dependances', 4),
@@ -137,11 +138,16 @@ INSERT INTO `item` (`id`, `name`, `description`, `further`, `skill_id`) VALUES
 (71, 'Chown', 'Chown', 'https://www.computerhope.com/unix/uchown.htm\r\n', 3),
 (72, 'Diplay errors', 'Diplay PHP errors', 'https://stackify.com/display-php-errors/', 1),
 (73, 'Ebale or disable an apache Module', 'a2enmod, a2dismod - enable or disable an apache2 module', 'https://manpages.ubuntu.com/manpages/trusty/man8/a2enmod.8.html', 44),
-(74, 'PHP8 News', 'What\'s new in PHP8', 'https://kinsta.com/fr/blog/php-8/#abstract-trait-methods', 1),
+(74, 'PHP8 News', 'What\'s new in PHP8', 'https://kinsta.com/fr/blog/php-8', 1),
 (75, 'mixed type', 'All of these types: object|resource|array|string|int|float|bool|null\r\nThe mixed type accepts every value. (equivalent to the union type) object|resource|array|string|float|int|bool|null. Available as of PHP 8.0.0. ', 'https://www.php.net/manual/en/language.types.mixed.php', 1),
 (76, 'Hint', 'The type hints ensure that PHP will check the type of a value at the call time and throw a TypeError if there is a mismatch.', 'https://www.phptutorial.net/php-tutorial/php-type-hints/', 1),
 (77, 'Facade', 'Facade is a structural design pattern that provides a simplified interface to a library, a framework, or any other complex set of classes.', 'https://refactoring.guru/design-patterns/facade/php/example', 4),
-(78, 'Closure', 'Anonymous functions yield objects of this type. This class has methods that allow further control of the anonymous function after it has been created. ', 'https://www.php.net/manual/en/class.closure.php', 4);
+(78, 'Closure', 'Anonymous functions yield objects of this type. This class has methods that allow further control of the anonymous function after it has been created. ', 'https://www.php.net/manual/en/class.closure.php', 4),
+(79, 'INNER JOIN', 'SELECT * FROM orders ON orders.customer_id=customers.id;', 'https://www.w3schools.com/sql/sql_join_inner.asp', 5),
+(80, 'PHP Sandbox', 'Behavior looks like vscode environment ', 'https://phpsandbox.io/n/aqua-dorme-gtob0', 1),
+(82, 'PHP7.2 News', 'What\'s new in php7.2', 'https://kinsta.com/fr/blog/php-7-2', 1),
+(83, 'PHP7.4 News', 'What\'s new in php7.4', 'https://kinsta.com/fr/blog/php-7-4', 1),
+(84, 'optimization', 'optimization with Explain', 'https://gafish.fr/explain-optimisation-de-requetes-mysql/', 5);
 
 -- --------------------------------------------------------
 
@@ -287,6 +293,7 @@ ALTER TABLE `demo`
 --
 ALTER TABLE `item`
   ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `id` (`id`),
   ADD KEY `skill_id` (`skill_id`);
 
 --
@@ -336,13 +343,13 @@ ALTER TABLE `appuser`
 -- AUTO_INCREMENT for table `demo`
 --
 ALTER TABLE `demo`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
 
 --
 -- AUTO_INCREMENT for table `note`
