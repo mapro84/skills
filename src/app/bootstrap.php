@@ -90,8 +90,8 @@ switch ($page) {
 		$demo_id = $_GET['demo_id'];
 		if(Check::is_numeric($demo_id)) $demoController->show($demo_id);
 		break;
-	case 'addnote':
-		$noteController->add();
+	case 'search':
+		$itemController->search();
 		break;
 	default: $homeController->show();
 }

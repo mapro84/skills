@@ -72,15 +72,15 @@ class DB{
     }
 
     /**
-     * 
-     * @param String $request = SQL request
-     * @param array $parameters prepared request avoid SQL injections
-     * @param mixed $class = class we want to implement automatically
-     * @param boolean $one = number of record in return
-     * @return array of classe one or several record(s)
+     * Summary of prepare
+     * @param mixed $request
+     * @param array $parameters
+     * @param mixed $class
+     * @param mixed $one
+     * @return mixed
      */
-    public static function prepare(String $request, array $parameters, $class, $one = false){
-    	$statement = self::getInstance()->prepare($request, $parameters);
+    public static function prepare($request, array $parameters, $class, $one = false){
+    	$statement = self::getInstance()->prepare($request, $parameters);  
     	$statement->execute($parameters);
     	$statement->setFetchMode(PDO::FETCH_CLASS, $class);
     	if($one){

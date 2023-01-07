@@ -17,47 +17,57 @@
 </head>
 
 <body class="bg-light">
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-header navbar-expand-lg navbar-light bg-light">
     <div class="head-menu collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li>
-      <a class="navbar-brand" href="index.php?page=home" ><img src="public/img/tips-logo4.png" title="Home page - my notes"></a>
-      </li>
-      <li>
-      <a class="navbar-brand" href="index.php?page=skills"><img src="public/img/skills.png" title="Skills"></a>
-      </li>
-      <li>
-      <a class="navbar-brand" href="index.php?page=skill_name&name=PHP"><img src="public/img/php.png" title="PHP"></a>
-      </li>
-      <li>
-      <a class="navbar-brand" href="index.php?page=skill_name&name=Python"><img src="public/img/python.png" title="Python"></a>
-      </li>
-      <li>
-      <a class="navbar-brand" href="index.php?page=skill_name&name=Linux"><img src="public/img/linux.png" title="Linux"></a>
-      </li>
-      <li>
-      <a class="navbar-brand" href="index.php?page=skill_name&name=MySQL"><img src="public/img/mysql.png" title="Mysql"></a>
-      </li>
-      <li>
-      <a class="navbar-brand" href="index.php?page=skill_name&name=HTML"><img src="public/img/html-logo.svg" title="Html"></a>
-      </li>
-      <li class="back-office-logo">
-      <a class="navbar-brand" href="index.php?page=bo&action=add"><img src="public/img/back-office.png" title="Back-office"></a>
-      </li>    
-    </ul>
-  </div>
-  <form class="form-inline my-2 my-lg-0 col-1">
-    <button class="btn my-2 my-sm-0" onclick="disconnect()"type="submit"><i class="fa fa-unlink"></i></button>
-  </form>
-</nav>
+      <ul class="navbar-nav mr-auto">
+        <li>
+        <a class="navbar-brand" href="index.php?page=home" ><img src="public/img/tips-logo4.png" title="Home page - my notes"></a>
+        </li>
+        <li>
+        <a class="navbar-brand" href="index.php?page=skills"><img src="public/img/skills.png" title="Skills"></a>
+        </li>
+        <li>
+        <a class="navbar-brand" href="index.php?page=skill_name&name=PHP"><img src="public/img/php.png" title="PHP"></a>
+        </li>
+        <li>
+        <a class="navbar-brand" href="index.php?page=skill_name&name=Python"><img src="public/img/python.png" title="Python"></a>
+        </li>
+        <li>
+        <a class="navbar-brand" href="index.php?page=skill_name&name=Linux"><img src="public/img/linux.png" title="Linux"></a>
+        </li>
+        <li>
+        <a class="navbar-brand" href="index.php?page=skill_name&name=MySQL"><img src="public/img/mysql.png" title="Mysql"></a>
+        </li>
+        <li>
+        <a class="navbar-brand" href="index.php?page=skill_name&name=HTML"><img src="public/img/html-logo.svg" title="Html"></a>
+        </li>
+        <li class="back-office-logo">
+        <a class="navbar-brand" href="index.php?page=bo&action=add"><img src="public/img/back-office.png" title="Back-office"></a>
+        </li>    
+      </ul>
+    </div>
+    <form method="post" id="frmSearch" name="frmSearch" role="form" class="was-validated" action="index.php?page=search">
+      <div class="row mb-2">
+          <div class="col-lg-4 d-flex">
+              <input type="text" ID="tbTerm" name="search" class="form-control rounded text-black" />
+          </div>
+          <div class="col-lg-1 mx-left">
+              <button type="submit" ID="btnSearch" class="btn-success btn text-white">Search</button>
+          </div>
+      </div>
+    </form>
+    <form class="form-inline  my-2 my-lg-0 col-1">
+      <button class="btn my-2 my-sm-0" onclick="disconnect()"type="submit"><i class="fa fa-unlink"></i></button>
+    </form>
+  </nav>
 
-<div class="container">
-<main role="main" class="container">
-<?php
-echo $content;
-?>
-</main>
-</div>
+  <div class="container-fluid">
+    <main role="main" class="container">
+    <?php
+      echo $content;
+    ?>
+    </main>
+  </div>
 
 </body>
 </html>

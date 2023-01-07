@@ -26,7 +26,7 @@ class PizzaFactory {
 			
 		} if($pizzaType === "margherita"){
 			$class_name = "\\src\\app\\Demo\\Factory\\" . "Pizza" . ucfirst($pizzaType);
-			return new  $class_name(false,$shape);
+			return new  $class_name($shape);
 		}
         return null;
 	}

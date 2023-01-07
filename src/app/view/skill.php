@@ -118,7 +118,7 @@ if($numberUrls>0){
 ?>
 </div>
 
-<script>
+<!-- <script>
 function search() {
     if(checkIfEmpty(document.getElementById('searchinput').value)){
     	return false
@@ -126,4 +126,4 @@ function search() {
         alert('rr');
     }
 }
-</script>
+</script> -->

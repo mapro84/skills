@@ -23,7 +23,7 @@ class Check {
 		$safeAssociativeArray = [];
 		foreach($associativeArray as $key => $value){
 			if($key === 'url' || $key === 'further'){
-				$safeValue = self::isUrl($value,true) ? $value : NULL;
+				$safeValue = self::isUrl($value) ? $value : NULL;
 			}else{
 				$safeValue = self::is_safe_alphanumeric($value,true) ? $value : NULL;
 			}
@@ -97,9 +97,9 @@ class Check {
 	}
 	
 	/**
-	 * Password preg_match with letters and at least 1 special character, 1 integer and an uppercase letter 
-	 * @param String $password
-	 * @return boolean
+	 * Summary of is_safe_password
+	 * @param string $password
+	 * @return bool
 	 */
 	public static function is_safe_password(String $password){
 		$match = '/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{8,12}$/';
