@@ -3,33 +3,60 @@ use src\Core\Utils\Debug;
 use src\Core\Utils\Check;
 $items = $entities['items'];
 $demos = isset($entities['demos']) ? $entities['demos'] : [];
-$urls = isset($entities['urls']) ? $entities['urls'] : [];
+$relatedUrls = isset($entities['relatedUrls']) ? $entities['relatedUrls'] : [];
+
 ?>
-
-
-
 <div class="container px-4 py-5">
 <?php
-foreach($items as $item):
+$idsArray = [];
+foreach ($items as $item) {
+	if(in_array($item['id'],$idsArray)){
+		continue;
+	}
+	array_push($idsArray, $item['id']);
+	if (!empty($item['name'])) {
+		$match = "/^([a-zA-Z]+:\s)(.*$)/";
+		$itemName = preg_replace($match, "$2", $item['name']);
+		if (!is_null($item['further']) && Check::isUrl($item['further'])) {
+			echo "<div class='row mb-2'>";
+			echo '<div style="text-align: left" class="col-4"><a href="' . $item['further'] . '" target="_blank">' . $itemName . '</a>' . '</div>';
+			echo '<div style="text-align: left" class="col-8">' . $item['description'] . '</div>';
+			echo "</div>";
+		} elseif (!is_null($item['further']) && Check::isPdf($item['further'])) {
+			echo "<div class='row mb-2'>";
+			echo '<div style="text-align: left" class="col"><a href="./public/doc/' . $item['further'] . '" target="_blank">' . $itemName . '</a></div>';
+			echo '<div style="text-align: left" class="col-8">' . $item['description'] . '</div>';
+			echo "</div>";
+		} else {
+			echo "<div class='row mb-2'>";
+			echo '<div style="text-align: left"  class="col">' . $itemName . '</div>';
+			echo '<div style="text-align: left" class="col-8">' . $item['description'] . '</div>';
+			echo "</div>";
+		}
+	}
+}
 
-if    (!is_null($item->further) && Check::isUrl($item->further)){ 
-	echo "<div class='row mb-2'>";
-	echo '<div style="text-align: left" class="col-4"><a href="'.$item->further .'" target="_blank">'.$item->name.'</a>'.'</div>';
-	echo '<div style="text-align: left" class="col-8">'.$item->description.'</div>';
-	echo "</div>";
+?>
+</div>
+
+
+<div class="container px-4 py-5" id="featured-3">
+<?php
+$numberUrls = count($relatedUrls);
+if($numberUrls>0){
+?>
+<ul>
+	<li class="remove-bullet">Related urls</li>
+	<ul>
+	<?php
+		foreach($relatedUrls as $url){
+			echo '<li><a href="'.$url['url'].'" target="_blank">'.$url['urlname'].'</a></li>';
+		}
+?>
+</ul>
+</ul>
+<?php
 }
-elseif(!is_null($item->further) && Check::isPdf($item->further)){ 
-	echo "<div class='row mb-2'>";
-	echo '<div style="text-align: left" class="col"><a href="./public/doc/'.$item->further.'" target="_blank">'.$item->name.'</a></div>';
-	echo '<div style="text-align: left" class="col-8">'.$item->description.'</div>';
-	echo "</div>";
-} else {
-		echo "<div class='row mb-2'>";
-		echo '<div style="text-align: left"  class="col">' . $item->name . '</div>';
-		echo '<div style="text-align: left" class="col-8">' . $item->description . '</div>';
-		echo "</div>";
-}
-endforeach;
 ?>
 </div>
 
@@ -52,24 +79,3 @@ if($numberDemos>0){
 }
 ?>
 </div>
-
-<div class="container px-4 py-5" id="featured-3">
-<?php
-$numberUrls = count($urls);
-if($numberUrls>0){
-?>
-<ul>
-	<li class="remove-bullet">Related urls</li>
-	<ul>
-	<?php
-		foreach($urls as $url){
-			echo '<li><a href="'.$url->url.'" target="_blank">'.$url->name.'</a></li>';
-		}
-	?>
-	</ul>
-</ul>
-<?php
-}
-?>
-</div>
-

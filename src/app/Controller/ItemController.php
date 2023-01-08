@@ -19,12 +19,23 @@ class ItemController extends AppController{
 	public function search() {
 		$parameters = Check::makeSafeAssociativeArray($_POST);
 		$items = Item::search($parameters);
+		$relatedUrls = $this->getRelatedUrls($items);
 		$demos = [];
-		$urls = [];
-		$entities = array('items' => $items, 'demos' => $demos,'urls'=>$urls);
+		$entities = array('items' => $items, 'demos' => $demos,'relatedUrls'=>$relatedUrls);
 		$this->render('items',$entities);
 	}
 	
+  public function getRelatedUrls(mixed $items): array{
+		$relatedUrls = [];
+		foreach($items as $item){
+			if(!empty($item['urlname'])){
+				$url = array('urlname' => $item['urlname'],'url' => $item['url']);
+			  array_push($relatedUrls, $url);
+			}
+		}
+		return $relatedUrls;
+	}
+
 	public function show($item_id,$skill_name) {
 		$item = Item::find($item_id,'item');
 		$demos = Item::findBy('demo',$item_id,'item');

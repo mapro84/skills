@@ -16,13 +16,14 @@ class Item extends Entity{
         $search = $parameters["search"] ?? null;
         if ($search === null)
             return [];
-        $query = 'SELECT id, name, description, further, MATCH(name, description) against(?)
-                 as score FROM item WHERE MATCH(name, description) 
-                 against(?) ORDER BY `score` ASC;';
+        $query = 'SELECT i.id, i.name, i.description, i.further, u.name as urlname, u.url 
+        FROM item as i 
+        LEFT OUTER JOIN url_skill_item as link ON i.id = link.item_id 
+        LEFT OUTER JOIN url as u ON u.id = link.url_id
+        WHERE MATCH(i.name,i.description,i.further) against(?);';
         $queryParams = [];
         array_push($queryParams,$search);
-        array_push($queryParams,$search);
-        return DB::prepare($query, $queryParams, get_called_class());
+        return DB::prepare($query, $queryParams);
     }
 
 }

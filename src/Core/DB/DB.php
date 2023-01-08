@@ -79,10 +79,14 @@ class DB{
      * @param mixed $one
      * @return mixed
      */
-    public static function prepare($request, array $parameters, $class, $one = false){
+    public static function prepare($request, array $parameters, $class=false, $one = false){
     	$statement = self::getInstance()->prepare($request, $parameters);  
     	$statement->execute($parameters);
-    	$statement->setFetchMode(PDO::FETCH_CLASS, $class);
+        if ($class === false) {
+            $statement->setFetchMode(PDO::FETCH_ASSOC);
+        }else{
+            $statement->setFetchMode(PDO::FETCH_CLASS, $class);
+        }
     	if($one){
     		$datas = $statement->fetch();
     	}else{
