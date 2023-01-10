@@ -20,7 +20,7 @@ class ItemController extends AppController{
 		$parameters = Check::makeSafeAssociativeArray($_POST);
 		$items = Item::search($parameters);
 		$relatedUrls = $this->getRelatedUrls($items);
-		$demos = [];
+		$demos = $this->getDemos($items);
 		$entities = array('items' => $items, 'demos' => $demos,'relatedUrls'=>$relatedUrls);
 		$this->render('items',$entities);
 	}
@@ -34,6 +34,17 @@ class ItemController extends AppController{
 			}
 		}
 		return $relatedUrls;
+	}
+
+	public function getDemos(mixed $items): array{
+		$demos = [];
+		foreach($items as $item){
+			if(!empty($item['dname'])){
+				$demo = array('did' => $item['did'],'dname' => $item['dname'],'ddescription' => $item['ddescription']);
+			  array_push($demos, $demo);
+			}
+		}
+		return $demos;
 	}
 
 	public function show($item_id,$skill_name) {

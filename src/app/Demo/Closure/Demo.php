@@ -62,6 +62,13 @@ class Demo
     $bootstrapHtml->addResult($data);
     $bootstrapHtml->endDiv();
 
+    // Small little trick. You can use a closures in itself via reference.
+    // Example to delete a directory with all subdirectories and files:
+    // $deleteDirectory = null;
+    // $deleteDirectory = $closure->deleteDirectory($deleteDirectory);
+    // $deleteDirectory("./test");
+
+
     $bootstrapHtml->endData();
     return $bootstrapHtml->getData();
 

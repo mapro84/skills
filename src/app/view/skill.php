@@ -50,26 +50,26 @@ foreach($items as $item):
 	$itemName = preg_replace($match, "$2", $item->name);
 
 	if    (!is_null($item->further) && Check::isUrl($item->further)){
-		echo "<div class='row mb-2'>";
+		echo "<div class='row mb-2, border-bottom'>";
 		echo '<div style="text-align: left" class="col-4"><a href="'.$item->further .'" target="_blank">'.$itemName.'</a>'.'</div>';
 		echo '<div style="text-align: left" class="col-8">'.$item->description.'</div>';
 		echo "</div>";
 	}
 	elseif(!is_null($item->further) && Check::isPdf($item->further)){ 
-		echo "<div class='row mb-2'>";
+		echo "<div class='row mb-2, border-bottom'>";
 		echo '<div style="text-align: left" class="col"><a href="./public/doc/'.$item->further.'" target="_blank">'.$itemName.'</a></div>';
 		echo '<div style="text-align: left" class="col-8">'.$item->description.'</div>';
 		echo "</div>";
 	} else {
 		//for long description without url or doc
 		// elseif(strlen($item->description) < 5){ 
-				echo "<div class='row mb-2'>";
+				echo "<div class='row mb-2, border-bottom'>";
 				echo '<div style="text-align: left"  class="col">' . $itemName . '</div>';
 				echo '<div style="text-align: left" class="col-8">' . $item->description . '</div>';
 				echo "</div>";
 				// }
 		// else{
-		// 	echo "<div class='row mb-2'>";
+		// 	echo "<div class='row mb-2, border-bottom'>";
 		// 	echo '<div style="text-align: left"  class="col">'.$item->name.'</div>';
 		// 	// echo '<div style="text-align: left" class="col-8">'.substr($item->description,0,50).'...</div>';
 		// 	echo '<div style="text-align: left"  class="col-8"><a href="index.php?page=item&itemid='.$item->id.'&skill_name='.$skill->name.'">'.substr($item->description,0,50).'...</a></div>';

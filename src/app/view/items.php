@@ -4,7 +4,6 @@ use src\Core\Utils\Check;
 $items = $entities['items'];
 $demos = isset($entities['demos']) ? $entities['demos'] : [];
 $relatedUrls = isset($entities['relatedUrls']) ? $entities['relatedUrls'] : [];
-
 ?>
 <div class="container px-4 py-5">
 <?php
@@ -18,17 +17,17 @@ foreach ($items as $item) {
 		$match = "/^([a-zA-Z]+:\s)(.*$)/";
 		$itemName = preg_replace($match, "$2", $item['name']);
 		if (!is_null($item['further']) && Check::isUrl($item['further'])) {
-			echo "<div class='row mb-2'>";
+			echo "<div class='row mb-2, border-bottom'>";
 			echo '<div style="text-align: left" class="col-4"><a href="' . $item['further'] . '" target="_blank">' . $itemName . '</a>' . '</div>';
 			echo '<div style="text-align: left" class="col-8">' . $item['description'] . '</div>';
 			echo "</div>";
 		} elseif (!is_null($item['further']) && Check::isPdf($item['further'])) {
-			echo "<div class='row mb-2'>";
+			echo "<div class='row mb-2, border-bottom'>";
 			echo '<div style="text-align: left" class="col"><a href="./public/doc/' . $item['further'] . '" target="_blank">' . $itemName . '</a></div>';
 			echo '<div style="text-align: left" class="col-8">' . $item['description'] . '</div>';
 			echo "</div>";
 		} else {
-			echo "<div class='row mb-2'>";
+			echo "<div class='row mb-2, border-bottom'>";
 			echo '<div style="text-align: left"  class="col">' . $itemName . '</div>';
 			echo '<div style="text-align: left" class="col-8">' . $item['description'] . '</div>';
 			echo "</div>";
@@ -70,7 +69,7 @@ if($numberDemos>0){
 	<ul>
 	<?php
 		foreach($demos as $demo){
-			echo '<li><a href="index.php?page=demo&demo_id='.$demo->id.'" target="_blank">'.$demo->name.'</a></li>';
+			echo '<li><a href="index.php?page=demo&demo_id='.$demo['did'].'" target="_blank">'.$demo['dname'].'</a></li>';
 		}
 	?>
 	</ul>

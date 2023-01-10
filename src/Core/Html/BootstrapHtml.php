@@ -38,7 +38,7 @@ class BootstrapHtml implements Html{
         return $this->data;
     }
 
-    public function addTitle($title){
+    public function addTitle($title) {
         $this->data .= "<div class='demoTitle'>{$title}</div>";
     }
 

@@ -30,12 +30,7 @@ class DemoController extends AppController{
 		$demoClass = $reflexionClass->newInstance();
 		$demoContent = $demoClass->demo();
 
-		// if($demo->name === 'DIC'){
-		// 	$DicDemo = new DICDemo();
-		// 	$demoContent = $DicDemo->demo();
-		// }
 		$entities = array('demo' => $demo, 'demoContent' => $demoContent);
 		$this->render('demo',$entities);
 	}
 }
-

@@ -22,15 +22,15 @@
 //$memc = new \Memcache;
 //$memc->addServer('localhost','11211');
 
-if(empty($_POST['film'])) {
-?>
+// if(empty($_POST['film'])) {
 
-$memc = new \Memcache;
-//$memc->addServer('localhost','11211');
 
-if(empty($_POST['film'])) {
+// $memc = new \Memcache;
+// $memc->addServer('localhost','11211');
+
+// if(empty($_POST['film'])) {
 ?>
-  <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <!-- <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
     <head>
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
       <title>Simple Memcache Lookup</title>
@@ -40,10 +40,10 @@ if(empty($_POST['film'])) {
         <p><b>Film</b>: <input type="text" size="20" name="film"></p>
         <input type="submit">
       </form>
-      <hr/>
+      <hr/> -->
 <?php
 
-} 
+// }
 /*
 else {
 

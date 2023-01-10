@@ -16,4 +16,21 @@ class Closure {
     };
   }
 
+  function deleteDirectory($deleteDirectory){
+    return function($path) use (&$deleteDirectory) {
+      $resource = opendir($path);
+      while (($item = readdir($resource)) !== false) {
+          if ($item !== "." && $item !== "..") {
+              if (is_dir($path . "/" . $item)) {
+                  $deleteDirectory($path . "/" . $item);
+              } else {
+                  unlink($path . "/" . $item);
+              }
+          }
+      }
+      closedir($resource);
+      rmdir($path);
+    };
+  }
+
 }
