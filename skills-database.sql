@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 08, 2023 at 09:49 PM
+-- Generation Time: Jan 10, 2023 at 07:05 PM
 -- Server version: 8.0.31-0ubuntu0.22.04.1
 -- PHP Version: 8.2.1
 
@@ -66,7 +66,8 @@ INSERT INTO `demo` (`id`, `name`, `description`, `item_id`) VALUES
 (14, 'Fluent', 'A fluent interface provides an easy-readable. Using this pattern results in code that can be read nearly as human language.', 55),
 (15, 'Facade', 'Facade is a structural design pattern that provides a simplified interface to a library, a framework, or any other complex set of classes.', 77),
 (16, 'Closure', 'Anonymous functions yield objects of this type. This class has methods that allow further control of the anonymous function after it has been created. ', 78),
-(17, 'PhpNews', 'What\'s new in PHP from 7.0', 74);
+(17, 'PhpNews', 'What\'s new in PHP from 7.0', 74),
+(18, 'Docker', 'Docker cmds', 106);
 
 -- --------------------------------------------------------
 
@@ -161,7 +162,22 @@ INSERT INTO `item` (`id`, `name`, `description`, `further`, `skill_id`) VALUES
 (101, 'SQL: Tutorial', 'SQL Courses', 'https://sql.sh/', 5),
 (102, 'IT: Multi-courses Tutorial', 'Python, Linux, NodeJS, Command line... Huge Library', 'https://linuxize.com/', 36),
 (103, 'IT: Multi-tutorial', 'Php, WordPress, Laravel, JS, CSS, Html, React, Mac, Linux, Windows, Technologic Watch...', 'https://apical.xyz/', 36),
-(104, 'Cache', 'Russian Doll Caching', 'https://grafikart.fr/tutoriels/russian-doll-caching-748', 1);
+(104, 'Cache', 'Russian Doll Caching', 'https://grafikart.fr/tutoriels/russian-doll-caching-748', 1),
+(105, 'AI: Video Creator', 'Own Video Designing', 'https://www.flexclip.com/fr/editor/app?ratio=landscape', 6),
+(106, 'Docker Tutorial', 'Grafikart Learning', 'https://grafikart.fr/tutoriels/docker', 47),
+(107, 'Docker: Docker Repositories', 'hub.docker.com', 'https://hub.docker.com/', 47),
+(108, 'Docker: Login to Docker-hub', 'docker login -u [Username]<br>\npassword given by hub.docker.com/settings/security', 'https://hub.docker.com/settings/security', 47),
+(109, 'Docker: Dockerfile', 'Build an image from Dockerfile<br>docker build -t [IMAGE_NAME]:[TAG_VERSION] .', 'https://www.youtube.com/watch?v=Ik_mC7JSJ-A', 47),
+(110, 'Docker: Image History', 'docker history [IMAGE_NAME]:[TAG_VERSION]', NULL, 47),
+(111, 'Docker: Run a container', 'docker run -tid [IMAGE_NAME]:[TAG_VERSION]', NULL, 47),
+(112, 'Docker: Connect into a container ', 'docker exec -ti [CONTAINER_ID]  /bin/bash<br>CONTAINER_ID is given by docker run cmd', NULL, 47),
+(113, 'Docker: Get active containers from an image', 'docker inspect --format=\'{{.Id}} {{.Parent}}\' $(docker images --filter since=[IMAGE_ID] -q)', NULL, 47),
+(114, 'Docker: Delete container', 'docker rmi -f [CONTAINER_ID]', NULL, 47),
+(115, 'Docker: List images', 'docker images [-q]', NULL, 47),
+(116, 'Docker: Rename image and tag', 'docker tag [IMAGE_NAME]:[VERSION] php8:0.1', NULL, 47),
+(117, 'Docker: Get image informations', 'docker inspect [IMAGE_ID]', NULL, 47),
+(118, 'Docker: Docker-compose Tutorial', 'Api, Service, Persistent volumes...', 'https://www.youtube.com/playlist?list=PLn6POgpklwWqaC1pdx02SrrgOaL2ZL7G0', 47),
+(119, 'Linux: make a directory and sub-directories', 'mkdir -p volumes/var/run/php', NULL, 3);
 
 -- --------------------------------------------------------
 
@@ -234,7 +250,8 @@ INSERT INTO `skill` (`id`, `name`, `logo`) VALUES
 (38, 'English', 'english-learning.png'),
 (40, 'Excel', 'excel.png'),
 (44, 'Apache', 'apache.png'),
-(45, 'GIT', 'git.png');
+(45, 'GIT', 'git.png'),
+(47, 'Docker', 'docker.png');
 
 -- --------------------------------------------------------
 
@@ -375,13 +392,13 @@ ALTER TABLE `appuser`
 -- AUTO_INCREMENT for table `demo`
 --
 ALTER TABLE `demo`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=120;
 
 --
 -- AUTO_INCREMENT for table `note`
@@ -399,7 +416,7 @@ ALTER TABLE `privilege`
 -- AUTO_INCREMENT for table `skill`
 --
 ALTER TABLE `skill`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `url`

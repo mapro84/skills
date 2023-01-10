@@ -15,16 +15,18 @@ class ItemController extends AppController{
 		parent::__construct();
 		$this->skillController = new SkillController();
 	}
-	
+
 	public function search() {
 		$parameters = Check::makeSafeAssociativeArray($_POST);
 		$items = Item::search($parameters);
 		$relatedUrls = $this->getRelatedUrls($items);
 		$demos = $this->getDemos($items);
-		$entities = array('items' => $items, 'demos' => $demos,'relatedUrls'=>$relatedUrls);
+		$skillLogos = $this->getLogos($items);
+		$entities = array('items' => $items,'demos' => $demos,
+		                  'skillLogos'=>$skillLogos,'relatedUrls'=>$relatedUrls);
 		$this->render('items',$entities);
 	}
-	
+
   public function getRelatedUrls(mixed $items): array{
 		$relatedUrls = [];
 		foreach($items as $item){
@@ -45,6 +47,16 @@ class ItemController extends AppController{
 			}
 		}
 		return $demos;
+	}
+
+	public function getLogos(mixed $items): array{
+		$logos = [];
+		foreach($items as $item){
+			if(!empty($item['skillname']) && !isset($logos[$item['skillname']])){
+			  $logos[$item['skillname']]= $item['logo'];
+			}
+		}
+		return $logos;
 	}
 
 	public function show($item_id,$skill_name) {

@@ -2,10 +2,29 @@
 use src\Core\Utils\Debug;
 use src\Core\Utils\Check;
 $items = $entities['items'];
-$demos = isset($entities['demos']) ? $entities['demos'] : [];
-$relatedUrls = isset($entities['relatedUrls']) ? $entities['relatedUrls'] : [];
+$demos = $entities['demos'] ?? [];
+$relatedUrls = $entities['relatedUrls'] ?? [];
+$skillLogos = $entities['skillLogos'] ?? [];
 ?>
-<div class="container px-4 py-5">
+
+<div class="container" id="featured-3">
+<div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<div class="head-menu collapse navbar-collapse" id="navbarSupportedContent">
+<ul class="navbar-nav mr-auto">
+<?php
+foreach ($skillLogos as $skillName => $logo) {
+	echo '<li class="navbar-brand"><img src="./public/img/' . $logo . '" alt="' . $skillName . ' Logo"></li>';
+}
+?>
+</ul>
+</div>
+</nav>
+</div>
+</div>
+
+<div class="container" id="featured-3">
+<!-- <div class="container px-4 py-5"> -->
 <?php
 $idsArray = [];
 foreach ($items as $item) {
@@ -38,8 +57,8 @@ foreach ($items as $item) {
 ?>
 </div>
 
-
-<div class="container px-4 py-5" id="featured-3">
+<div class="container" id="featured-3">
+<!-- <div class="container px-4 py-5" id="featured-3"> -->
 <?php
 $numberUrls = count($relatedUrls);
 if($numberUrls>0){
