@@ -18,7 +18,7 @@ class Item extends Entity{
             return [];
         $query = 'SELECT i.id, i.name, i.description, i.further, u.name as urlname,
          u.url, d.name as dname, d.description as ddescription, d.id as did,
-         s.name as skillname, s.logo
+         s.name as skillname, s.logo, s.id as skillid
         FROM item as i 
         LEFT OUTER JOIN url_skill_item as link ON i.id = link.item_id 
         LEFT OUTER JOIN url as u ON u.id = link.url_id

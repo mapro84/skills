@@ -16,25 +16,14 @@ $urls = isset($entities['urls']) ? $entities['urls'] : [];
 
 <?php
 echo '<li class="navbar-brand"><img src="./public/img/' . $skill->logo . '" alt="'.$skill->name.' Logo"></li>';
+$admin = false;
+if($admin === true){
 echo '<li><form class="form-inline" method="post" action="index.php?page=deleteskill" ' .
        'onsubmit="return confirm(\'Do you confirm to delete ' . $skill->name . ' skill and possible items related?\');">' .
 	   '<input type="hidden" name="skill_id" value='.$skill->id.'>' . 
 	   '<button class="btn btn-danger" ><i class="fa fa-trash"></i></button></form></li>';
-// echo '<form class="form-inline my-2 my-lg-0">
-// <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-// <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-// </form>';
+}
 ?>
-
-<!-- 
-Ex button inline	
-
-<div class="input-group mb-2">
-  <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
-  <div class="input-group-append">
-    <button class="btn btn-outline-secondary" type="button">Button</button>
-  </div>
-</div> -->
 
 </ul>
 </div>
@@ -43,7 +32,6 @@ Ex button inline
 </div>
 
 <div class="container" id="featured-3">
-<!-- px-4 py-5 -->
 <?php
 foreach($items as $item):
 	$match = "/^([a-zA-Z]+:\s)(.*$)/";
@@ -80,6 +68,7 @@ endforeach;
 ?>
 </div>
 
+
 <div class="container px-4 py-5" id="featured-3">
 <?php
 $numberDemos = count($demos);
@@ -100,7 +89,7 @@ if($numberDemos>0){
 ?>
 </div>
 
-<div class="container px-4 py-5" id="featured-3">
+<div class="container" id="featured-3">
 <?php
 $numberUrls = count($urls);
 if($numberUrls>0){

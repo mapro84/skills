@@ -13,8 +13,10 @@ $skillLogos = $entities['skillLogos'] ?? [];
 <div class="head-menu collapse navbar-collapse" id="navbarSupportedContent">
 <ul class="navbar-nav mr-auto">
 <?php
-foreach ($skillLogos as $skillName => $logo) {
-	echo '<li class="navbar-brand"><img src="./public/img/' . $logo . '" alt="' . $skillName . ' Logo"></li>';
+foreach ($skillLogos as $skillid => $logo) {
+	echo '<li class="navbar-brand">
+	<a href="index.php?page=skill&skill_id='.$skillid.'"><img src="./public/img/' . $logo . '"></a>
+	</li>';
 }
 ?>
 </ul>

@@ -52,8 +52,8 @@ class ItemController extends AppController{
 	public function getLogos(mixed $items): array{
 		$logos = [];
 		foreach($items as $item){
-			if(!empty($item['skillname']) && !isset($logos[$item['skillname']])){
-			  $logos[$item['skillname']]= $item['logo'];
+			if(!empty($item['skillid']) && !isset($logos[$item['skillid']])){
+			  $logos[$item['skillid']]= $item['logo'];
 			}
 		}
 		return $logos;
