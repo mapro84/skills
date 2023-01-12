@@ -22,9 +22,55 @@ class ItemController extends AppController{
 		$relatedUrls = $this->getRelatedUrls($items);
 		$demos = $this->getDemos($items);
 		$skillLogos = $this->getLogos($items);
-		$entities = array('items' => $items,'demos' => $demos,
+		// $openaiResponse = $this->getOpenaiResponse($parameters);
+		$openaiResponse = '';
+		$entities = array('items' => $items,'demos' => $demos, 'openaiResponse' => $openaiResponse,
 		                  'skillLogos'=>$skillLogos,'relatedUrls'=>$relatedUrls);
+		if(empty($entities['openaiResponse']) && empty($entities['items'])){
+			$entities = [];
+		}
 		$this->render('items',$entities);
+	}
+
+	public function getOpenaiResponse($parameters): string
+	{
+		$wordToLookFor = $parameters["search"];
+
+		$open_api_key = getenv('open_api_key');
+		$ch = curl_init();
+
+		curl_setopt($ch, CURLOPT_URL, 'https://api.openai.com/v1/completions');
+		curl_setopt($ch, CURLOPT_POST, true);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+			"Content-type: application/json",
+			"Authorization: Bearer $open_api_key"
+		)
+		);
+
+		$api_params = array(
+			'model' => 'text-davinci-003',
+			//'prompt' => 'in the field of Information Technology what a ' . $wordToLookFor . ' and how to use it',
+			'prompt' => $wordToLookFor,
+			'max_tokens' => 4080
+		);
+
+		$api_query = json_encode($api_params);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $api_query);
+
+		$api_response = curl_exec($ch);
+		curl_close($ch);
+
+		$openaiResponse = json_decode($api_response, true);
+    
+		if(!empty($openaiResponse['choices'][0]['text'])){
+			$formattedResponse = preg_replace('/[^0-99]\.\s/m', '.<br>', $openaiResponse['choices'][0]['text']);
+		  $formattedResponse = preg_replace('/;/m', 'code:<br>', $formattedResponse);
+			return $formattedResponse;
+		}else{
+			return '';
+		}
+		
 	}
 
   public function getRelatedUrls(mixed $items): array{

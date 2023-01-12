@@ -1,7 +1,7 @@
 import requests
 import json
 
-api_key = ""
+api_key = "env.openai_api_key"
 
 # Define the endpoint URL
 url = "https://api.openai.com/v1/engines/davinci/completions"

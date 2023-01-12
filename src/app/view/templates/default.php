@@ -13,6 +13,24 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 <script type="text/javascript" src="public/js/javascript-utils.js"></script>
 <script type="text/javascript" src="public/js/main.js"></script>
+
+<script>
+      const btnSearch = document.querySelector("#btnSearch");
+      const spinner = document.querySelector("#spinner");
+
+      btnSearch.addEventListener("click", () => {
+          spinner.style.visibility = "visible";
+      });
+
+      document.getElementById("openai").addEventListener("load", endSearch());
+
+      function endSearch() {
+        document.getElementById("content").innerHTML = "Iframe is loaded.";
+        spinner.style.visibility = "hidden";
+      }
+    </script>
+
+
 <title>Tips&Notes</title>
 </head>
 
@@ -46,13 +64,18 @@
         </li>    
       </ul>
     </div>
+    <div id="spinner" class="invisible d-flex align-items-center">
+      <div class="spinner-border text-primary" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
     <form method="post" id="frmSearch" name="frmSearch" role="form" class="was-validated" action="index.php?page=search">
       <div class="row mb-2">
           <div class="col-lg-4 d-flex">
               <input type="text" ID="tbTerm" name="search" class="form-control rounded text-black" />
           </div>
           <div class="col-lg-1 mx-left">
-              <button type="submit" ID="btnSearch" class="btn-success btn text-white">Search</button>
+              <button type="submit" ID="btnSearch" class="btn-success btn text-white" onclick="displaySpinner()">Search</button>
           </div>
       </div>
     </form>
@@ -60,8 +83,7 @@
       <button class="btn my-2 my-sm-0" onclick="disconnect()"type="submit"><i class="fa fa-unlink"></i></button>
     </form>
   </nav>
-
-  <div class="container-fluid">
+  <div id="content" class="container-fluid">
     <main role="main" class="container">
     <?php
       echo $content;

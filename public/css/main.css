@@ -53,3 +53,7 @@
   }
 
   a { text-decoration: none !important; }
+
+  .invisible{
+    visibility: hidden;
+  }
